@@ -1,0 +1,3 @@
+rootProject.name = 'uha'
+
+include 'core', 'web'
