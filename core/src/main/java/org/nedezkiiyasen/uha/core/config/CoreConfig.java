@@ -1,9 +1,10 @@
 package org.nedezkiiyasen.uha.core.config;
 
-import org.nedezkiiyasen.uha.core.dao.EptituderDao;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -73,13 +74,5 @@ public class CoreConfig {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(emfb.getObject());
         return transactionManager;
-    }
-
-    public static void main(String[] args) {
-        ApplicationContext ctx = new AnnotationConfigApplicationContext(CoreConfig.class);
-        EptituderDao dao = ctx.getBean(EptituderDao.class);
-        dao.findAll().stream().forEach(eptituder -> {
-            System.out.printf("%s %s\n", eptituder.getName(), eptituder.getSide());
-        });
     }
 }

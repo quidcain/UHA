@@ -3,6 +3,8 @@ apply plugin: 'war'
 dependencies {
     compile project(':core')
     compileOnly 'javax.servlet:javax.servlet-api:3.1.0'
+    compile 'javax.servlet:jstl:1.2'
+    compile "org.springframework:spring-webmvc:$springVersion"
 }
 
 war {
