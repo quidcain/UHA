@@ -5,8 +5,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.jdbc.datasource.init.DatabasePopulator;
+import org.springframework.jdbc.datasource.init.DatabasePopulatorUtils;
+import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -36,6 +40,10 @@ public class CoreConfig {
     private String dialect;
     @Value("${jpa.models}")
     private String models;
+    @Value("${db.insert.schema}")
+    private boolean insertSchema;
+    @Value("${db.insert.data}")
+    private boolean insertData;
 
     @Bean
     public DataSource dataSource() {
@@ -44,7 +52,25 @@ public class CoreConfig {
         dataSource.setUrl(url);
         dataSource.setUsername(username);
         dataSource.setPassword(password);
+        if (insertSchema)
+            DatabasePopulatorUtils.execute(schemaDatabasePopulator(), dataSource);
+        if (insertData)
+            DatabasePopulatorUtils.execute(dataDatabasePopulator(), dataSource);
         return dataSource;
+    }
+
+    private DatabasePopulator schemaDatabasePopulator() {
+        ResourceDatabasePopulator databasePopulator = new ResourceDatabasePopulator();
+        databasePopulator.setContinueOnError(true);
+        databasePopulator.addScript(new ClassPathResource("schema.sql"));
+        return databasePopulator;
+    }
+
+    private DatabasePopulator dataDatabasePopulator() {
+        ResourceDatabasePopulator databasePopulator = new ResourceDatabasePopulator();
+        databasePopulator.setContinueOnError(true);
+        databasePopulator.addScript(new ClassPathResource("data.sql"));
+        return databasePopulator;
     }
 
     @Bean
