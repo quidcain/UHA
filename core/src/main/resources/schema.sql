@@ -7,7 +7,7 @@ CREATE TABLE `clans` (
   `ico` varchar(255) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+);
 
 DROP TABLE IF EXISTS `eptituders_events`;
 
@@ -15,7 +15,7 @@ CREATE TABLE `eptituders_events` (
   `eptituder_id` bigint(20) DEFAULT NULL,
   `event_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`eptituder_id`, `event_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+);
 
 DROP TABLE IF EXISTS `eptituders`;
 
@@ -31,7 +31,7 @@ CREATE TABLE `eptituders` (
   `points` int(11) DEFAULT NULL,
   `clan_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+);
 
 DROP TABLE IF EXISTS `events`;
 
@@ -45,7 +45,7 @@ CREATE TABLE `events` (
   `status` varchar(255) DEFAULT NULL,
   `rank` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+);
 
 DROP TABLE IF EXISTS `exams_eptituders`;
 
@@ -53,7 +53,7 @@ CREATE TABLE `exams_eptituders` (
   `exam_id` bigint(20) DEFAULT NULL,
   `eptituder_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`exam_id`, `eptituder_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+);
 
 DROP TABLE IF EXISTS `exam_questions`;
 
@@ -64,7 +64,7 @@ CREATE TABLE `exam_questions` (
   `answer` text,
   `status` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+);
 
 DROP TABLE IF EXISTS `exams`;
 
@@ -73,4 +73,4 @@ CREATE TABLE `exams` (
   `status` tinyint(1) DEFAULT NULL,
   `rank` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+);

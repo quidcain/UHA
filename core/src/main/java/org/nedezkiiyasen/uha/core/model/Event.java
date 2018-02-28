@@ -13,7 +13,7 @@ import java.util.List;
 @Setter
 public class Event {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @ManyToMany(mappedBy = "events")
     private List<Eptituder> eptituder;

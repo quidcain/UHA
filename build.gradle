@@ -19,5 +19,7 @@ subprojects {
         compile 'org.slf4j:slf4j-api:1.7.25'
         compile 'org.slf4j:slf4j-jdk14:1.7.25'
         compileOnly 'org.projectlombok:lombok:1.16.20'
+        testCompile 'junit:junit:4.12'
+        testCompile "org.springframework:spring-test:$springVersion"
     }
 }

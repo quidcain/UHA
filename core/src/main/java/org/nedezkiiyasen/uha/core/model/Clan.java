@@ -12,7 +12,7 @@ import java.util.List;
 @Setter
 public class Clan {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @OneToMany(mappedBy = "clan")
     private List<Eptituder> eptituders;

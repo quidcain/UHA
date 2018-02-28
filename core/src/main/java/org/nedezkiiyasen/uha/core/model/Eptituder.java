@@ -2,6 +2,7 @@ package org.nedezkiiyasen.uha.core.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.List;
@@ -10,9 +11,10 @@ import java.util.List;
 @Table(name = "eptituders")
 @Getter
 @Setter
+@ToString(exclude = {"clan", "events"})
 public class Eptituder {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @ManyToOne
     @JoinColumn(name = "clan_id")
