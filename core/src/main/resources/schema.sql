@@ -12,8 +12,8 @@ CREATE TABLE `clans` (
 DROP TABLE IF EXISTS `eptituders_events`;
 
 CREATE TABLE `eptituders_events` (
-  `eptituder_id` bigint(20) DEFAULT NULL,
-  `event_id` bigint(20) DEFAULT NULL,
+  `eptituder_id` bigint(20) NOT NULL,
+  `event_id` bigint(20) NOT NULL,
   PRIMARY KEY (`eptituder_id`, `event_id`)
 );
 
@@ -50,8 +50,8 @@ CREATE TABLE `events` (
 DROP TABLE IF EXISTS `exams_eptituders`;
 
 CREATE TABLE `exams_eptituders` (
-  `exam_id` bigint(20) DEFAULT NULL,
-  `eptituder_id` bigint(20) DEFAULT NULL,
+  `exam_id` bigint(20) NOT NULL,
+  `eptituder_id` bigint(20) NOT NULL,
   PRIMARY KEY (`exam_id`, `eptituder_id`)
 );
 
