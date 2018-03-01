@@ -26,26 +26,44 @@ public class EptituderController {
         return "eptituders";
     }
 
+    @PostMapping
+    public String create(@ModelAttribute("form") @Valid Eptituder eptituder,
+                         BindingResult result,
+                         RedirectAttributes redirectAtrrs) {
+        if (result.hasErrors()) {
+            redirectAtrrs.addFlashAttribute("org.springframework.validation.BindingResult.form", result);
+            redirectAtrrs.addFlashAttribute("form", eptituder);
+        } else {
+            eptituderDao.save(eptituder);
+        }
+        return "redirect:/eptituders";
+    }
+
     @GetMapping(value = "/{id}")
     public String getById(@PathVariable Integer id, Model model) {
+        if (!model.containsAttribute("form")) {
+            model.addAttribute("form", new Eptituder());
+        }
         model.addAttribute("eptituder", eptituderDao.findById(id).get());
         return "eptituder";
     }
 
-    @PostMapping
-    public String post(@RequestParam String action,
-                       @ModelAttribute("form") @Valid Eptituder eptituder,
-                       BindingResult result,
-                       RedirectAttributes redirectAtrrs) {
+    @PostMapping(value = "/{id}")
+    public String updateDelete(@RequestParam String action,
+                               @PathVariable Integer id,
+                               @ModelAttribute("form") @Valid Eptituder eptituder,
+                               BindingResult result,
+                               RedirectAttributes redirectAtrrs) {
+        eptituder.setId(id);
         switch (action) {
-            case "create_update":
+            case "update":
                 if (result.hasErrors()) {
                     redirectAtrrs.addFlashAttribute("org.springframework.validation.BindingResult.form", result);
                     redirectAtrrs.addFlashAttribute("form", eptituder);
-                    return "redirect:/eptituders";
+                } else {
+                    eptituderDao.save(eptituder);
                 }
-                eptituderDao.save(eptituder);
-                break;
+                return "redirect:/eptituders/" + id;
             case "delete":
                 eptituderDao.delete(eptituder);
                 break;
