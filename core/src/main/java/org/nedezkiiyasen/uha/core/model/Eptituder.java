@@ -5,6 +5,9 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Null;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -26,11 +29,17 @@ public class Eptituder {
         inverseJoinColumns = { @JoinColumn(name = "event_id") }
     )
     private List<Event> events;
+    @NotEmpty
     private String name;
+    @NotEmpty
     private String side;
+    @Size(max = 255)
     private String eptitudes;
     private String ico;
+    @NotEmpty
     private String bio;
+    @Null
     private String rank;
+    @Null
     private Integer points;
 }

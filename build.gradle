@@ -21,5 +21,6 @@ subprojects {
         compileOnly 'org.projectlombok:lombok:1.16.20'
         testCompile 'junit:junit:4.12'
         testCompile "org.springframework:spring-test:$springVersion"
+        compile 'org.hibernate:hibernate-validator:6.0.7.Final'
     }
 }
