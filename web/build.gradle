@@ -10,3 +10,10 @@ dependencies {
 war {
     archiveName = 'uha.war'
 }
+
+task explodedWar(type: Sync) {
+    into "${buildDir}/exploded"
+    with war
+}
+
+war.dependsOn explodedWar
