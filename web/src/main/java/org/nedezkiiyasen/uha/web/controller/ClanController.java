@@ -63,12 +63,11 @@ public class ClanController {
                 } else {
                     clanDao.save(clan);
                 }
-                return "redirect:/eptituders/" + id;
+                return "redirect:/clans/" + id;
             case "delete":
                 clanDao.delete(clan);
                 break;
         }
         return "redirect:/eptituders";
     }
-
 }

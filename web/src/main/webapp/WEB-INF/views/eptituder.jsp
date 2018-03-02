@@ -56,5 +56,16 @@
         <input type="hidden" name="action" value="delete">
         <input type="submit" value="Delete">
     </form>
+    <table>
+        <tr>
+            <th>Eptituder's events</th>
+        </tr>
+        <c:forEach items="${eptituder.events}" var="event">
+            <tr>
+                <s:url value="/events/${event.id}" var="eventLink"/>
+                <td><a href="${eventLink}">${event.name}</a></td>
+            </tr>
+        </c:forEach>
+    </table>
 </body>
 </html>
