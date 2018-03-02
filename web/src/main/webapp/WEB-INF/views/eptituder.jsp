@@ -3,7 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Eptituder</title>
 </head>
 <body>
     <s:url var="back" value="/eptituders" />
@@ -46,9 +46,10 @@
             <th>Clan</th>
         </tr>
         <tr>
+            <s:url value="/clans/${eptituder.clan.id}" var="clanLink"/>
             <td>${eptituder.name}</td>
             <td>${eptituder.side}</td>
-            <td>${eptituder.clan.name}</td>
+            <td><a href="${clanLink}">${eptituder.clan.name}</a></td>
         </tr>
     </table>
     <form action="${currentUrl}" method="post">

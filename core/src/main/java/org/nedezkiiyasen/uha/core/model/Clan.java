@@ -14,7 +14,7 @@ public class Clan {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @OneToMany(mappedBy = "clan")
+    @OneToMany(mappedBy = "clan", fetch = FetchType.EAGER)
     private List<Eptituder> eptituders;
     private String name;
     private String side;

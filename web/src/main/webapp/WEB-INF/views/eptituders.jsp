@@ -3,7 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Eptituders</title>
 </head>
 <body>
     <h2>Add new eptituder</h2>
@@ -16,7 +16,7 @@
                 <td><form:errors path="name" cssStyle="color: red;"/></td>
             </tr>
             <tr>
-                <td><form:label path="name">Side</form:label></td>
+                <td><form:label path="side">Side</form:label></td>
                 <td>
                     <form:select path="side">
                         <form:option value="good"/>
@@ -46,9 +46,10 @@
         <c:forEach items="${eptituderList}" var="eptituder">
             <tr>
                 <s:url value="/eptituders/${eptituder.id}" var="eptituderLink"/>
+                <s:url value="/clans/${eptituder.clan.id}" var="clanLink"/>
                 <td><a href="${eptituderLink}">${eptituder.name}</a></td>
                 <td>${eptituder.side}</td>
-                <td>${eptituder.clan.name}</td>
+                <td><a href="${clanLink}">${eptituder.clan.name}</a></td>
             </tr>
         </c:forEach>
     </table>
