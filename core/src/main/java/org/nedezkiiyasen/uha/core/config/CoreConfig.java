@@ -72,9 +72,9 @@ public class CoreConfig {
         dataSource.setUsername(username);
         dataSource.setPassword(password);
         if (insertSchema)
-            DatabasePopulatorUtils.execute(schemaDatabasePopulator(), dataSource);
+            DatabasePopulatorUtils.execute(databasePopulator("schema.sql"), dataSource);
         if (insertData)
-            DatabasePopulatorUtils.execute(dataDatabasePopulator(), dataSource);
+            DatabasePopulatorUtils.execute(databasePopulator("data.sql"), dataSource);
         return dataSource;
     }
 
@@ -87,17 +87,10 @@ public class CoreConfig {
                 .build();
     }
 
-    private DatabasePopulator schemaDatabasePopulator() {
+    private DatabasePopulator databasePopulator(String script) {
         ResourceDatabasePopulator databasePopulator = new ResourceDatabasePopulator();
         databasePopulator.setContinueOnError(true);
-        databasePopulator.addScript(new ClassPathResource("schema.sql"));
-        return databasePopulator;
-    }
-
-    private DatabasePopulator dataDatabasePopulator() {
-        ResourceDatabasePopulator databasePopulator = new ResourceDatabasePopulator();
-        databasePopulator.setContinueOnError(true);
-        databasePopulator.addScript(new ClassPathResource("data.sql"));
+        databasePopulator.addScript(new ClassPathResource(script));
         return databasePopulator;
     }
 
