@@ -5,7 +5,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Null;
 import javax.validation.constraints.Size;
 import java.util.List;
@@ -29,14 +29,17 @@ public class Eptituder {
         inverseJoinColumns = { @JoinColumn(name = "event_id") }
     )
     private List<Event> events;
-    @NotEmpty
+    @NotBlank
+    @Size(max = 255)
     private String name;
-    @NotEmpty
+    @NotBlank
+    @Size(max = 255)
     private String side;
     @Size(max = 255)
     private String eptitudes;
     private String ico;
-    @NotEmpty
+    @NotBlank
+    @Size(max = 255)
     private String bio;
     @Null
     private String rank;

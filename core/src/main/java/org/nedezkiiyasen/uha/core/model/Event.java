@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.sql.Date;
 import java.util.List;
 
@@ -17,8 +19,12 @@ public class Event {
     private Integer id;
     @ManyToMany(mappedBy = "events", fetch = FetchType.EAGER)
     private List<Eptituder> eptituders;
+    @NotBlank
+    @Size(max = 255)
     private String name;
     private String ico;
+    @NotBlank
+    @Size(max = 255)
     private String description;
     private Date date;
     private Integer points;
