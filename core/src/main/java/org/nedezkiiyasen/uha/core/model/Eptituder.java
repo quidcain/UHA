@@ -22,7 +22,7 @@ public class Eptituder {
     @ManyToOne
     @JoinColumn(name = "clan_id")
     private Clan clan;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
         name = "eptituders_events",
         joinColumns = { @JoinColumn(name = "eptituder_id") },

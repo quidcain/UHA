@@ -8,7 +8,7 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 public class EptituderTest {
-    private static int ID = 1;
+    private static Integer ID = 1;
     private static String NAME = "name";
     private static String SIDE = "side";
     private static String EPTITUDES = "eptitudes";
@@ -32,6 +32,7 @@ public class EptituderTest {
         eptituder.setPoints(1);
         eptituder.setEvents(EVENTS);
         eptituder.setClan(CLAN);
+        assertEquals(ID, eptituder.getId());
         assertEquals(NAME, eptituder.getName());
         assertEquals(SIDE, eptituder.getSide());
         assertEquals(EPTITUDES, eptituder.getEptitudes());

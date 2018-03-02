@@ -15,12 +15,13 @@ public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @ManyToMany(mappedBy = "events")
-    private List<Eptituder> eptituder;
+    @ManyToMany(mappedBy = "events", fetch = FetchType.EAGER)
+    private List<Eptituder> eptituders;
     private String name;
     private String ico;
     private String description;
     private Date date;
     private Integer points;
+    private String status;
     private String rank;
 }
