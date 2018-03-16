@@ -46,6 +46,15 @@ public class EptituderDaoTest {
     }
 
     @Test
+    public void testSaveAndUpdate() {
+        Eptituder saved = eptituderDao.save(stub());
+        saved.setName("igor");
+        eptituderDao.save(saved);
+        Eptituder gotten = eptituderDao.getOne(saved.getId());
+        assertEquals(saved.getName(), gotten.getName());
+    }
+
+    @Test
     public void testSaveAllAndFindAll() {
         List<Eptituder> eptituders = Arrays.asList(stub(), stub(), stub());
         eptituderDao.saveAll(eptituders);
