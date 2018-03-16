@@ -6,21 +6,24 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
+import static org.springframework.http.HttpMethod.POST;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
-            .withUser("user").password("password").roles("USER").and()
-            .withUser("admin").password("password").roles("USER", "ADMIN");
+            .withUser("user").password("{noop}password").roles("USER").and()
+            .withUser("admin").password("{noop}password").roles("USER", "ADMIN");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
             .antMatchers("/").permitAll()
-            .antMatchers("/events").hasRole("ADMIN")
+            .antMatchers(POST, "/events/**").hasRole("ADMIN")
+            .antMatchers(POST, "/eptituders/**", "/clans/**").hasRole("USER")
             .and()
             .formLogin();
     }
