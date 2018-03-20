@@ -1,57 +1,114 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Eptituders</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>UHA Team</title>
+    <link href="<s:url value='/resources/css/bootstrap.css'/>" rel="stylesheet">
+    <link href="<s:url value='/resources/css/custom_heroes.css'/>" rel="stylesheet">
 </head>
 <body>
-    <h2>Add new eptituder</h2>
-    <s:url var="currentUrl" value='' />
-    <form:form action="${currentUrl}" method="post" modelAttribute="form">
-        <table>
-            <tr>
-                <td><form:label path="name">Name</form:label></td>
-                <td><form:input path="name"/></td>
-                <td><form:errors path="name" cssStyle="color: red;"/></td>
-            </tr>
-            <tr>
-                <td><form:label path="side">Side</form:label></td>
-                <td>
-                    <form:select path="side">
-                        <form:option value="good"/>
-                        <form:option value="evil"/>
-                    </form:select>
-                </td>
-            </tr>
-            <tr>
-                <td><form:label path="eptitudes">Eptitudes</form:label></td>
-                <td><form:textarea path="eptitudes"></form:textarea></td>
-            </tr>
-            <tr>
-                <td><form:label path="bio">Biograpy</form:label></td>
-                <td><form:textarea path="bio"></form:textarea></td>
-                <td><form:errors path="bio" cssStyle="color: red;"/></td>
-            </tr>
-        </table>
-        <input type="submit">
-    </form:form>
-    <h2>Eptituders</h2>
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Side</th>
-            <th>Clan</th>
-        </tr>
-        <c:forEach items="${eptituderList}" var="eptituder">
-            <tr>
+    <nav id="siteNav" class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                	<span class="glyphicon glyphicon-th"></span> 
+                	UHA Team
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="./index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="#">Heroes</a>
+                    </li>
+					<li>
+                        <a href="./contacts.html">Contact</a>
+                    </li>
+                    <li>
+                        <a href="./sign_up.html">Sign up / Sign in</a>
+                    </li>
+                </ul>
+                
+            </div>
+        </div>
+    </nav>
+    <header>
+        <div class="header-content"> 
+        </div>
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Heroes
+                    <small>List</small>
+                </h1>
+            </div>
+        </div>
+        <div class="row">
+            <c:forEach items="${eptituderList}" var="eptituder">
+            <div class="col-md-3 portfolio-item">
                 <s:url value="/eptituders/${eptituder.id}" var="eptituderLink"/>
                 <s:url value="/clans/${eptituder.clan.id}" var="clanLink"/>
-                <td><a href="${eptituderLink}">${eptituder.name}</a></td>
-                <td>${eptituder.side}</td>
-                <td><a href="${clanLink}">${eptituder.clan.name}</a></td>
-            </tr>
-        </c:forEach>
-    </table>
+                <a href="${eptituderLink}">
+                    <img class="img-responsive" src="./images/hero11.jpg" alt="">
+                </a>
+                <h3>
+                    <a href="${eptituderLink}">${eptituder.name}</a>
+                </h3>
+                <p>abc</p>
+            </div>
+            </c:forEach>
+        </div>
+        <div class="row text-center">
+            <div class="col-lg-12">
+                <ul class="pagination">
+                    <li>
+                        <a href="#">&laquo;</a>
+                    </li>
+                    <li class="active">
+                        <a href="#">1</a>
+                    </li>
+                    <li>
+                        <a href="#">2</a>
+                    </li>
+                    <li>
+                        <a href="#">3</a>
+                    </li>
+                    <li>
+                        <a href="#">4</a>
+                    </li>
+                    <li>
+                        <a href="#">5</a>
+                    </li>
+                    <li>
+                        <a href="#">&raquo;</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <footer class="page-footer">
+        
+        	<div class="container">
+        		<p><span class="glyphicon glyphicon-globe"></span>  Yasen' Bloodislav Danikman  <span class="glyphicon glyphicon-globe"></span>
+        	</div>
+        
+    </footer>
+    <script src="<s:url value='/resources/js/jquery-1.11.3.min.js'/>"></script>
+    <script src="<s:url value='/resources/js/bootstrap.min.js'/>"></script>
 </body>
+
 </html>
