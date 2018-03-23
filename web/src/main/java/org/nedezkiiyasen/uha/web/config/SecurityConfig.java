@@ -25,6 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .antMatchers(POST, "/events/**").hasRole("ADMIN")
             .antMatchers(POST, "/eptituders/**", "/clans/**").hasRole("USER")
             .and()
-            .formLogin();
+            .formLogin()
+            .loginPage("/login");
     }
 }

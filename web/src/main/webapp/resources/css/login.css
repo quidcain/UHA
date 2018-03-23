@@ -6,7 +6,7 @@ body {
 }
 
 a {
-    color: yellowgreen;
+    color: white;
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
     transition: all .35s;
@@ -14,7 +14,7 @@ a {
 
 a:hover,
 a:focus {
-    color: forestgreen;
+    color: green;
 }
 
 p {
@@ -26,8 +26,8 @@ header {
     position: relative;
     width: 100%;
     /*min-height: 100%;*/
-    background-image: url('../images/.jpg');/*TODO add image*/
-    background-color: red;
+    background-image: url('../images/entrance.jpg');
+    background-color: orchid;
     background-position: center;
     background-size: cover;
 }
@@ -106,12 +106,22 @@ header .header-content {
 	background-position: 50% 50%;
 	}
 
+.contact {
+    text-align: center;
+    padding: 100px 0;
+    background-color: LimeGreen;
+    color: #fff;
+    font-size: 22px;
+    font-weight: 300;
+    }
+
+
 .page-footer {
 	text-align: center;
     padding: 15px 0 8px;
     font-weight: 50;
     color: white-gray;
-    background-color: white;
+    background-color: black;
 	}
 	
 .navbar-default {

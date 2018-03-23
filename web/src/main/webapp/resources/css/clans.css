@@ -26,7 +26,8 @@ header {
     position: relative;
     width: 100%;
     /*min-height: 100%;*/
-    background-image: url('../images/avengers.jpg');
+    background-image: url('../images/akatsuke.jpg');
+    background-color: red;
     background-position: center;
     background-size: cover;
 }
@@ -36,12 +37,7 @@ header .header-content {
     width: 100%;
     padding: 300px 0px 70px;
 }
-/*
-header .header-content:hover{
-    text-shadow: 1px 1px 3px lime;
 
-}
-*/
 @media(min-width:768px) {
     header {
         min-height: 100%;
@@ -92,18 +88,15 @@ header .header-content:hover{
 }
 
 .item-1 {
-	background: url('../images/iron_man_on_black.jpg');
-    background-color: aliceblue;
+	background: url('../images/lamborghini huracan.jpg');
 	}
 	
 .item-2 {
-	background: url('../images/cap.jpg');
-    background-color: blue;
+	background: url('../images/bentley continental.jpg');
 	}
 	
 .item-3 {
-	background: url('../images/spider_man_rise_of_electro.jpg');
-    background-color: blueviolet;
+	background: url('../images/bmw z4.jpg');
 	}
 		
 .item-1,
@@ -118,7 +111,7 @@ header .header-content:hover{
     padding: 15px 0 8px;
     font-weight: 50;
     color: white-gray;
-    background-color: black;
+    background-color: white;
 	}
 	
 .navbar-default {

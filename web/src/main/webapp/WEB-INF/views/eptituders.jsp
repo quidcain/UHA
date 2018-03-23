@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>UHA Team</title>
     <link href="<s:url value='/resources/css/bootstrap.css'/>" rel="stylesheet">
-    <link href="<s:url value='/resources/css/custom_heroes.css'/>" rel="stylesheet">
+    <link href="<s:url value='/resources/css/eptituders.css'/>" rel="stylesheet">
 </head>
 <body>
     <nav id="siteNav" class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -32,13 +32,19 @@
                         <a href="./index.html">Home</a>
                     </li>
                     <li>
-                        <a href="#">Heroes</a>
+                        <a href="<s:url value='/eptituders'/>">Eptituders</a>
                     </li>
-					<li>
+                    <li>
+                        <a href="<s:url value='/clans'/>">Clans</a>
+                    </li>
+                    <li>
+                        <a href="<s:url value='/events'/>">Events</a>
+                    </li>
+                    <li>
                         <a href="./contacts.html">Contact</a>
                     </li>
                     <li>
-                        <a href="./sign_up.html">Sign up / Sign in</a>
+                        <a href="<s:url value='/login'/>">Log in</a>
                     </li>
                 </ul>
                 
@@ -52,7 +58,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Heroes
+                <h1 class="page-header">Eptituder
                     <small>List</small>
                 </h1>
             </div>
@@ -101,14 +107,11 @@
         </div>
     </div>
     <footer class="page-footer">
-        
-        	<div class="container">
-        		<p><span class="glyphicon glyphicon-globe"></span>  Yasen' Bloodislav Danikman  <span class="glyphicon glyphicon-globe"></span>
-        	</div>
-        
+        <div class="container">
+            <p><span class="glyphicon glyphicon-globe"></span>  Yasen' Bloodislav Danikman  <span class="glyphicon glyphicon-globe"></span>
+        </div>
     </footer>
     <script src="<s:url value='/resources/js/jquery-1.11.3.min.js'/>"></script>
     <script src="<s:url value='/resources/js/bootstrap.min.js'/>"></script>
 </body>
-
 </html>
