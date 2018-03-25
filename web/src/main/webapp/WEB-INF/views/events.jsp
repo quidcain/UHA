@@ -1,56 +1,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>UHA Team</title>
-    <link href="<s:url value='/resources/css/bootstrap.css'/>" rel="stylesheet">
-    <link href="<s:url value='/resources/css/events.css'/>" rel="stylesheet">
-</head>
-<body>
-<nav id="siteNav" class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">
-                <span class="glyphicon glyphicon-th"></span>
-                UHA Team
-            </a>
-        </div>
-        <div class="collapse navbar-collapse" id="navbar">
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="./index.html">Home</a>
-                </li>
-                <li>
-                    <a href="<s:url value='/eptituders'/>">Eptituders</a>
-                </li>
-                <li>
-                    <a href="<s:url value='/clans'/>">Clans</a>
-                </li>
-                <li>
-                    <a href="<s:url value='/events'/>">Events</a>
-                </li>
-                <li>
-                    <a href="./contacts.html">Contact</a>
-                </li>
-                <li>
-                    <a href="<s:url value='/login'/>">Log in</a>
-                </li>
-            </ul>
 
-        </div>
-    </div>
-</nav>
+<c:set var="pageName" value="events"/>
+<%@ include file="/WEB-INF/views/fragments/header.jspf"%>
+
 <header>
     <div class="header-content">
     </div>

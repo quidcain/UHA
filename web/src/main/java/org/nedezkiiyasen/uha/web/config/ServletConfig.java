@@ -33,6 +33,8 @@ public class ServletConfig implements WebMvcConfigurer {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/login");
+        registry.addViewController("/").setViewName("index");
+        registry.addViewController("/contacts");
         registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
     }
 }
