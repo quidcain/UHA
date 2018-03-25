@@ -26,6 +26,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .antMatchers(POST, "/eptituders/**", "/clans/**").hasRole("USER")
             .and()
             .formLogin()
-            .loginPage("/login");
+                .loginPage("/login")
+                .permitAll()
+            .and()
+                .csrf().disable();
     }
 }
