@@ -22,5 +22,6 @@ subprojects {
         testCompile 'junit:junit:4.12'
         testCompile "org.springframework:spring-test:$springVersion"
         compile 'org.hibernate:hibernate-validator:6.0.7.Final'
+        compile "org.springframework.security:spring-security-taglibs:$springVersion"
     }
 }

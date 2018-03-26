@@ -1,3 +1,4 @@
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +8,15 @@
     <title>UHA Team</title>
     <link href="<s:url value='/resources/css/bootstrap.css'/>" rel="stylesheet">
     <link href="<s:url value='/resources/css/${pageName}.css'/>" rel="stylesheet">
+    <style>
+        .principal {
+            color: white;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            display: block;
+            line-height: 20px;
+        }
+    </style>
 </head>
 <body>
 <nav id="siteNav" class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -40,9 +50,21 @@
                 <li>
                     <a href="<s:url value='/contacts'/>">Contact</a>
                 </li>
+                <sec:authorize access="!isAuthenticated()">
                 <li>
                     <a href="<s:url value='/login'/>">Log in</a>
                 </li>
+                </sec:authorize>
+                <sec:authorize access="isAuthenticated()">
+                <li>
+                    <span class="principal">
+                        <sec:authentication property="principal.username" />
+                    </span>
+                </li>
+                <li>
+                    <a href="<s:url value='/logout'/>">Log out</a>
+                </li>
+                </sec:authorize>
             </ul>
         </div>
     </div>
