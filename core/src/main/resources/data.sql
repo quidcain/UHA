@@ -1,9 +1,12 @@
-insert into eptituders (name, side)
-VALUES ('Bloodyslav', 'evil');
-insert into eptituders (name, side)
-VALUES ('Danuke', 'evil');
-insert into eptituders (name, side)
-VALUES ('Alethunder', 'good');
+insert into eptituders (name, side, role, password)
+VALUES ('Bloodyslav', 'evil', 'user',
+        '$2a$10$2X2ATtXkPTNUGGFM3rhQYOq9QVp77bjr9BmzIJh9YAkouhL81W9qi');
+insert into eptituders (name, side, role, password)
+VALUES ('Danuke', 'evil', 'admin',
+        '$2a$10$2X2ATtXkPTNUGGFM3rhQYOq9QVp77bjr9BmzIJh9YAkouhL81W9qi');
+insert into eptituders (name, side, role, password)
+VALUES ('Alethunder', 'good', 'user',
+        '$2a$10$2X2ATtXkPTNUGGFM3rhQYOq9QVp77bjr9BmzIJh9YAkouhL81W9qi');
 
 INSERT INTO clans (name, side) VALUES ('akatsuke', 'evil');
 UPDATE eptituders SET clan_id = 1 WHERE id=2;

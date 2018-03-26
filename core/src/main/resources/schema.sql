@@ -22,6 +22,8 @@ DROP TABLE IF EXISTS `eptituders`;
 CREATE TABLE `eptituders` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `role` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `eptitudes` varchar(255) DEFAULT NULL,
   `ico` varchar(255) DEFAULT NULL,
