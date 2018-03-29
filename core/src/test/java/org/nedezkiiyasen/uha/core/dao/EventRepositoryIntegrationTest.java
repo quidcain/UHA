@@ -3,7 +3,7 @@ package org.nedezkiiyasen.uha.core.dao;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.nedezkiiyasen.uha.core.config.CoreConfig;
-import org.nedezkiiyasen.uha.core.model.Eptituder;
+import org.nedezkiiyasen.uha.core.model.Event;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.jpa.JpaObjectRetrievalFailureException;
 import org.springframework.test.context.ContextConfiguration;
@@ -19,51 +19,50 @@ import static org.junit.Assert.assertNotNull;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = CoreConfig.class)
 @Transactional
-public class EptituderDaoIntegrationTest {
+public class EventRepositoryIntegrationTest {
     @Autowired
-    private EptituderDao eptituderDao;
+    private EventRepository eventRepository;
 
     @Test
-    public void testEptituderDaoIsNotNull() {
-        assertNotNull(eptituderDao);
+    public void testEventDaoIsNotNull() {
+        assertNotNull(eventRepository);
     }
 
     @Test
     public void testSaveAndGet() {
-        Eptituder saved = eptituderDao.save(stub());
-        Eptituder gotten = eptituderDao.getOne(saved.getId());
+        Event saved = eventRepository.save(stub());
+        Event gotten = eventRepository.getOne(saved.getId());
         assertEquals(saved.getName(), gotten.getName());
     }
 
     @Test(expected = JpaObjectRetrievalFailureException.class)
     public void testSaveAndDelete() {
-        Eptituder saved = eptituderDao.save(stub());
-        eptituderDao.delete(saved);
-        eptituderDao.getOne(saved.getId());
+        Event saved = eventRepository.save(stub());
+        eventRepository.delete(saved);
+        eventRepository.getOne(saved.getId());
     }
 
     @Test
     public void testSaveAndUpdate() {
-        Eptituder saved = eptituderDao.save(stub());
-        saved.setName("igor");
-        eptituderDao.save(saved);
-        Eptituder gotten = eptituderDao.getOne(saved.getId());
+        Event saved = eventRepository.save(stub());
+        saved.setName("Civil war");
+        eventRepository.save(saved);
+        Event gotten = eventRepository.getOne(saved.getId());
         assertEquals(saved.getName(), gotten.getName());
     }
 
     @Test
     public void testSaveAllAndFindAll() {
-        int before = eptituderDao.findAll().size();
-        List<Eptituder> eptituders = Arrays.asList(stub(), stub(), stub());
-        eptituderDao.saveAll(eptituders);
-        List<Eptituder> all = eptituderDao.findAll();
-        assertEquals(before + eptituders.size(), all.size());
+        int before = eventRepository.findAll().size();
+        List<Event> events = Arrays.asList(stub(), stub(), stub());
+        eventRepository.saveAll(events);
+        List<Event> all = eventRepository.findAll();
+        assertEquals(before + events.size(), all.size());
     }
 
-    private Eptituder stub() {
-        Eptituder eptituder = new Eptituder();
-        eptituder.setName("vadim");
-        eptituder.setEptitudes("php, handsome suit");
-        return eptituder;
+    private Event stub() {
+        Event event = new Event();
+        event.setName("Age of Ultron");
+        return event;
     }
 }

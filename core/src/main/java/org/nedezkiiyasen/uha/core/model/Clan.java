@@ -12,10 +12,7 @@ import java.util.List;
 @Table(name = "clans")
 @Getter
 @Setter
-public class Clan {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class Clan extends RepositoryItem {
     @OneToMany(mappedBy = "clan", fetch = FetchType.EAGER)
     private List<Eptituder> eptituders;
     @NotBlank

@@ -3,7 +3,7 @@ package org.nedezkiiyasen.uha.core.dao;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.nedezkiiyasen.uha.core.config.CoreConfig;
-import org.nedezkiiyasen.uha.core.model.Event;
+import org.nedezkiiyasen.uha.core.model.Clan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.jpa.JpaObjectRetrievalFailureException;
 import org.springframework.test.context.ActiveProfiles;
@@ -21,49 +21,49 @@ import static org.junit.Assert.assertNotNull;
 @ContextConfiguration(classes = CoreConfig.class)
 @Transactional
 @ActiveProfiles("test")
-public class EventDaoTest {
+public class ClanRepositoryTest {
     @Autowired
-    private EventDao eventDao;
+    private ClanRepository clanRepository;
 
     @Test
-    public void testEventDaoIsNotNull() {
-        assertNotNull(eventDao);
+    public void testClanDaoIsNotNull() {
+        assertNotNull(clanRepository);
     }
 
     @Test
     public void testSaveAndGet() {
-        Event saved = eventDao.save(stub());
-        Event gotten = eventDao.getOne(saved.getId());
+        Clan saved = clanRepository.save(stub());
+        Clan gotten = clanRepository.getOne(saved.getId());
         assertEquals(saved.getName(), gotten.getName());
     }
 
     @Test(expected = JpaObjectRetrievalFailureException.class)
     public void testSaveAndDelete() {
-        Event saved = eventDao.save(stub());
-        eventDao.delete(saved);
-        eventDao.getOne(saved.getId());
+        Clan saved = clanRepository.save(stub());
+        clanRepository.delete(saved);
+        clanRepository.getOne(saved.getId());
     }
 
     @Test
     public void testSaveAndUpdate() {
-        Event saved = eventDao.save(stub());
-        saved.setName("Civil war");
-        eventDao.save(saved);
-        Event gotten = eventDao.getOne(saved.getId());
+        Clan saved = clanRepository.save(stub());
+        saved.setName("X-men");
+        clanRepository.save(saved);
+        Clan gotten = clanRepository.getOne(saved.getId());
         assertEquals(saved.getName(), gotten.getName());
     }
 
     @Test
     public void testSaveAllAndFindAll() {
-        List<Event> events = Arrays.asList(stub(), stub(), stub());
-        eventDao.saveAll(events);
-        List<Event> all = eventDao.findAll();
-        assertEquals(events.size(), all.size());
+        List<Clan> clans = Arrays.asList(stub(), stub(), stub());
+        clanRepository.saveAll(clans);
+        List<Clan> all = clanRepository.findAll();
+        assertEquals(clans.size(), all.size());
     }
 
-    private Event stub() {
-        Event event = new Event();
-        event.setName("Age of Ultron");
-        return event;
+    private Clan stub() {
+        Clan clan = new Clan();
+        clan.setName("Avengers");
+        return clan;
     }
 }

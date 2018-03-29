@@ -15,10 +15,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString(exclude = {"clan", "events"})
-public class Eptituder {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class Eptituder extends RepositoryItem {
     @ManyToOne
     @JoinColumn(name = "clan_id")
     private Clan clan;

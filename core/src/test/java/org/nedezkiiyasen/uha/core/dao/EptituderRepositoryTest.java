@@ -22,43 +22,43 @@ import static org.junit.Assert.assertNotNull;
 @ContextConfiguration(classes = CoreConfig.class)
 @Transactional
 @ActiveProfiles("test")
-public class EptituderDaoTest {
+public class EptituderRepositoryTest {
     @Autowired
-    private EptituderDao eptituderDao;
+    private EptituderRepository eptituderRepository;
 
     @Test
     public void testEptituderDaoIsNotNull() {
-        assertNotNull(eptituderDao);
+        assertNotNull(eptituderRepository);
     }
 
     @Test
     public void testSaveAndGet() {
-        Eptituder saved = eptituderDao.save(stub());
-        Eptituder gotten = eptituderDao.getOne(saved.getId());
+        Eptituder saved = eptituderRepository.save(stub());
+        Eptituder gotten = eptituderRepository.getOne(saved.getId());
         assertEquals(saved.getName(), gotten.getName());
     }
 
     @Test(expected = JpaObjectRetrievalFailureException.class)
     public void testSaveAndDelete() {
-        Eptituder saved = eptituderDao.save(stub());
-        eptituderDao.delete(saved);
-        eptituderDao.getOne(saved.getId());
+        Eptituder saved = eptituderRepository.save(stub());
+        eptituderRepository.delete(saved);
+        eptituderRepository.getOne(saved.getId());
     }
 
     @Test
     public void testSaveAndUpdate() {
-        Eptituder saved = eptituderDao.save(stub());
+        Eptituder saved = eptituderRepository.save(stub());
         saved.setName("igor");
-        eptituderDao.save(saved);
-        Eptituder gotten = eptituderDao.getOne(saved.getId());
+        eptituderRepository.save(saved);
+        Eptituder gotten = eptituderRepository.getOne(saved.getId());
         assertEquals(saved.getName(), gotten.getName());
     }
 
     @Test
     public void testSaveAllAndFindAll() {
         List<Eptituder> eptituders = Arrays.asList(stub(), stub(), stub());
-        eptituderDao.saveAll(eptituders);
-        List<Eptituder> all = eptituderDao.findAll();
+        eptituderRepository.saveAll(eptituders);
+        List<Eptituder> all = eptituderRepository.findAll();
         assertEquals(eptituders.size(), all.size());
     }
 

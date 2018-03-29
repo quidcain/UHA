@@ -55,8 +55,8 @@ public class EptituderTest {
         eptituder.setRank(RANK);
         eptituder.setPoints(1);
         assertEquals(String.format(
-                "Eptituder(id=%d, name=%s, side=%s, eptitudes=%s, ico=%s, bio=%s, rank=%s, points=%d)",
-                eptituder.getId(), eptituder.getName(), eptituder.getSide(), eptituder.getEptitudes(),
+                "Eptituder(name=%s, side=%s, eptitudes=%s, ico=%s, bio=%s, rank=%s, points=%d)",
+                eptituder.getName(), eptituder.getSide(), eptituder.getEptitudes(),
                 eptituder.getIco(), eptituder.getBio(), eptituder.getRank(), eptituder.getPoints()),
                 eptituder.toString());
     }
