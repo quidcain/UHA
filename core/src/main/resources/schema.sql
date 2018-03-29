@@ -35,6 +35,13 @@ CREATE TABLE `eptituders` (
   PRIMARY KEY (`id`)
 );
 
+DROP TABLE IF EXISTS `eptituder_roles`;
+
+CREATE TABLE `eptituder_roles` (
+  `name` varchar(255) DEFAULT NULL,
+  `role` varchar(40) DEFAULT NULL
+);
+
 DROP TABLE IF EXISTS `events`;
 
 CREATE TABLE `events` (

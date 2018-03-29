@@ -1,12 +1,15 @@
-insert into eptituders (name, side, role, password)
-VALUES ('Bloodyslav', 'evil', 'user',
-        '$2a$10$2X2ATtXkPTNUGGFM3rhQYOq9QVp77bjr9BmzIJh9YAkouhL81W9qi');
-insert into eptituders (name, side, role, password)
-VALUES ('Danuke', 'evil', 'admin',
-        '$2a$10$2X2ATtXkPTNUGGFM3rhQYOq9QVp77bjr9BmzIJh9YAkouhL81W9qi');
-insert into eptituders (name, side, role, password)
-VALUES ('Alethunder', 'good', 'user',
-        '$2a$10$2X2ATtXkPTNUGGFM3rhQYOq9QVp77bjr9BmzIJh9YAkouhL81W9qi');
+insert into eptituders (name, side, password)
+VALUES ('Bloodyslav', 'evil', '$2a$10$2X2ATtXkPTNUGGFM3rhQYOq9QVp77bjr9BmzIJh9YAkouhL81W9qi');
+insert into eptituder_roles values ('Bloodyslav', 'ROLE_USER');
+
+insert into eptituders (name, side, password)
+VALUES ('Danuke', 'evil', '$2a$10$2X2ATtXkPTNUGGFM3rhQYOq9QVp77bjr9BmzIJh9YAkouhL81W9qi');
+insert into eptituder_roles values ('Danuke', 'ROLE_USER');
+insert into eptituder_roles values ('Danuke', 'ROLE_ADMIN');
+
+insert into eptituders (name, side, password)
+VALUES ('Alethunder', 'good', '$2a$10$2X2ATtXkPTNUGGFM3rhQYOq9QVp77bjr9BmzIJh9YAkouhL81W9qi');
+insert into eptituder_roles values ('Alethunder', 'ROLE_USER');
 
 INSERT INTO clans (name, side) VALUES ('akatsuke', 'evil');
 UPDATE eptituders SET clan_id = 1 WHERE id=2;

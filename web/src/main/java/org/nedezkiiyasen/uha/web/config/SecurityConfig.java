@@ -23,9 +23,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.jdbcAuthentication()
                 .dataSource(dataSource)
                 .usersByUsernameQuery("select name, password, true from eptituders where name=?")
-            .authoritiesByUsernameQuery("select name, role from eptituders where name=?")
+            .authoritiesByUsernameQuery("select name, role from eptituder_roles where name=?")
             .passwordEncoder(new BCryptPasswordEncoder());
-        System.out.println(new BCryptPasswordEncoder().encode("123"));
     }
 
     @Override
