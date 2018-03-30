@@ -1,9 +1,10 @@
 package org.nedezkiiyasen.uha.web.controller;
 
 import org.nedezkiiyasen.uha.core.model.RepositoryItem;
-import org.nedezkiiyasen.uha.core.service.CsvService;
+import org.nedezkiiyasen.uha.core.service.csv.CsvService;
 import org.nedezkiiyasen.uha.core.service.DocumentService;
-import org.nedezkiiyasen.uha.core.service.PdfService;
+import org.nedezkiiyasen.uha.core.service.excel.ExcelService;
+import org.nedezkiiyasen.uha.core.service.pdf.PdfService;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,6 +19,7 @@ import java.io.IOException;
 public abstract class BaseController<T extends RepositoryItem> {
     private JpaRepository<T, Integer> repository;
     private CsvService csvService;
+    private ExcelService excelService;
     private PdfService pdfService;
 
     @GetMapping
@@ -82,6 +84,13 @@ public abstract class BaseController<T extends RepositoryItem> {
         writeDocument(response, csvService);
     }
 
+    @GetMapping("/xls")
+    public void xls(HttpServletResponse response) throws IOException {
+        response.setContentType("application/vnd.ms-excel");
+        response.setHeader("Content-Disposition", "attachment; filename=\"" + getMultipleViewName() + ".xls\"");
+        writeDocument(response, excelService);
+    }
+
     private void writeDocument(HttpServletResponse response, DocumentService documentService) throws IOException {
         try(ServletOutputStream outputStream = response.getOutputStream()) {
             documentService.write(outputStream);
@@ -98,5 +107,8 @@ public abstract class BaseController<T extends RepositoryItem> {
     }
     protected void setCsvService(CsvService csvService) {
         this.csvService = csvService;
+    }
+    public void setExcelService(ExcelService excelService) {
+        this.excelService = excelService;
     }
 }
