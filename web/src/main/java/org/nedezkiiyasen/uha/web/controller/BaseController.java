@@ -1,16 +1,24 @@
 package org.nedezkiiyasen.uha.web.controller;
 
 import org.nedezkiiyasen.uha.core.model.RepositoryItem;
+import org.nedezkiiyasen.uha.core.service.CsvService;
+import org.nedezkiiyasen.uha.core.service.DocumentService;
+import org.nedezkiiyasen.uha.core.service.PdfService;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.io.IOException;
 
 public abstract class BaseController<T extends RepositoryItem> {
     private JpaRepository<T, Integer> repository;
+    private CsvService csvService;
+    private PdfService pdfService;
 
     @GetMapping
     public String get(Model model) {
@@ -67,13 +75,28 @@ public abstract class BaseController<T extends RepositoryItem> {
         return "redirect:/" + getMultipleViewName();
     }
 
+    @GetMapping("/csv")
+    public void csv(HttpServletResponse response) throws IOException {
+        response.setContentType("data:text/csv;charset=utf-8");
+        response.setHeader("Content-Disposition","attachment; filename=\"" + getMultipleViewName() + ".csv\"");
+        writeDocument(response, csvService);
+    }
+
+    private void writeDocument(HttpServletResponse response, DocumentService documentService) throws IOException {
+        try(ServletOutputStream outputStream = response.getOutputStream()) {
+            documentService.write(outputStream);
+        }
+    }
+
+    protected abstract T createForm();
+    protected abstract String getSingleViewName();
     protected String getMultipleViewName() {
         return getSingleViewName() + 's';
     }
-
     protected void setRepository(JpaRepository<T, Integer> repository) {
         this.repository = repository;
     }
-    protected abstract T createForm();
-    protected abstract String getSingleViewName();
+    protected void setCsvService(CsvService csvService) {
+        this.csvService = csvService;
+    }
 }
