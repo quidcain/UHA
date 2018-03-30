@@ -1,8 +1,10 @@
 package org.nedezkiiyasen.uha.core.service;
 
-import java.io.IOException;
+import org.nedezkiiyasen.uha.core.document.Document;
+
 import java.io.OutputStream;
 
 public interface DocumentService {
-    void write(OutputStream os) throws IOException;
+    void write(OutputStream os);
+    Document createDocument();
 }
