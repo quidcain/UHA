@@ -23,7 +23,7 @@ public class EptituderModelToDocumentMapper extends ModelToDocumentMapper<Eptitu
             line.add(eptituder.getId().toString());
             line.add(eptituder.getName());
             line.add(eptituder.getSide());
-            line.add(eptituder.getEptitudes());
+            line.add(eptituder.getEptitudes() == null ? "" : eptituder.getEptitudes());
             line.add(eptituder.getPoints() == null ? "" : eptituder.getPoints().toString());
             line.add(eptituder.getClan() == null ? "" : eptituder.getClan().getName());
             lines.add(line);

@@ -4,6 +4,7 @@ import org.nedezkiiyasen.uha.core.dao.EventRepository;
 import org.nedezkiiyasen.uha.core.model.Event;
 import org.nedezkiiyasen.uha.core.service.csv.impl.EventCsvService;
 import org.nedezkiiyasen.uha.core.service.excel.impl.EventExcelService;
+import org.nedezkiiyasen.uha.core.service.pdf.impl.EventPdfService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,10 +15,12 @@ public class EventController extends BaseController<Event> {
     @Autowired
     public EventController(EventRepository eventRepository,
                            EventCsvService eventCsvService,
-                           EventExcelService eventExcelService) {
+                           EventExcelService eventExcelService,
+                           EventPdfService eventPdfService) {
         setRepository(eventRepository);
         setCsvService(eventCsvService);
         setExcelService(eventExcelService);
+        setPdfService(eventPdfService);
     }
 
     @Override

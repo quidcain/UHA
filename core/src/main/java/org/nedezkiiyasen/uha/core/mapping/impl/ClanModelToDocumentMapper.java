@@ -24,7 +24,7 @@ public class ClanModelToDocumentMapper extends ModelToDocumentMapper<Clan> {
             line.add(clan.getId().toString());
             line.add(clan.getName());
             line.add(clan.getSide());
-            line.add(clan.getDescription());
+            line.add(clan.getDescription() == null ? "" : clan.getDescription());
             lines.add(line);
         }
         return lines;

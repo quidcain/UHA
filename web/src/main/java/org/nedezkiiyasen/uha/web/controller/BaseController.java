@@ -91,6 +91,13 @@ public abstract class BaseController<T extends RepositoryItem> {
         writeDocument(response, excelService);
     }
 
+    @GetMapping("/pdf")
+    public void pdf(HttpServletResponse response) throws IOException {
+        response.setContentType("application/pdf");
+        response.setHeader("Content-Disposition","inline; filename=\"" + getMultipleViewName() + ".pdf\"");
+        writeDocument(response, pdfService);
+    }
+
     private void writeDocument(HttpServletResponse response, DocumentService documentService) throws IOException {
         try(ServletOutputStream outputStream = response.getOutputStream()) {
             documentService.write(outputStream);
@@ -110,5 +117,8 @@ public abstract class BaseController<T extends RepositoryItem> {
     }
     public void setExcelService(ExcelService excelService) {
         this.excelService = excelService;
+    }
+    public void setPdfService(PdfService pdfService) {
+        this.pdfService = pdfService;
     }
 }

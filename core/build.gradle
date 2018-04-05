@@ -3,5 +3,6 @@ dependencies {
     compile 'org.springframework.data:spring-data-jpa:2.0.3.RELEASE'
     compile 'org.hibernate:hibernate-entitymanager:5.2.13.Final'
     compile 'com.itextpdf:itextpdf:5.5.13'
+    compile 'org.apache.poi:poi:3.17'
     testCompile 'com.h2database:h2:1.3.148'
 }
