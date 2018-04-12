@@ -8,7 +8,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Eptituder
+            <h1 class="page-header">Clan
                 <small>List</small>
             </h1>
         </div>
@@ -63,6 +63,10 @@
                     </td>
                 </tr>
             </table>
+            <form action="${currentUrl}" method="post">
+                <input type="hidden" name="action" value="delete">
+                <input type="submit" class="btn btn-danger" value="Delete">
+            </form>
         </div>
     </div>
 </div>

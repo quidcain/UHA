@@ -10,6 +10,37 @@
     </div>
 </header>
 <div class="container">
+    <h2>Add new event</h2>
+    <s:url var="currentUrl" value='' />
+    <form:form action="${currentUrl}" method="post" modelAttribute="form">
+        <table>
+            <tr>
+                <td><form:label path="name">Name</form:label></td>
+                <td><form:input path="name"/></td>
+                <td><form:errors path="name" cssStyle="color: red;"/></td>
+            </tr>
+            <tr>
+                <td><form:label path="description">Description</form:label></td>
+                <td><form:textarea path="description"></form:textarea></td>
+                <td><form:errors path="description" cssStyle="color: red;"/></td>
+            </tr>
+            <tr>
+                <td><form:label path="date">Date(YYYY-MM-DD)</form:label></td>
+                <td><form:input path="date"/></td>
+                <td><form:errors path="date" cssStyle="color: red;"/></td>
+            </tr>
+            <tr>
+                <td><form:label path="status">Status</form:label></td>
+                <td>
+                    <form:select path="status">
+                        <form:option value="opened"/>
+                        <form:option value="finished"/>
+                    </form:select>
+                </td>
+            </tr>
+        </table>
+        <input type="submit">
+    </form:form>
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">Eptituder
