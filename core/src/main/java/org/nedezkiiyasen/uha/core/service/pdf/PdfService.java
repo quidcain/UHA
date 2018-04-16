@@ -1,6 +1,7 @@
 package org.nedezkiiyasen.uha.core.service.pdf;
 
 import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
@@ -11,6 +12,8 @@ import java.io.OutputStream;
 import java.util.Collection;
 
 public interface PdfService extends DocumentService {
+    Font FONT = FontFactory.getFont("DejaVuSans.ttf", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+
     default void write(OutputStream os) {
         Document document = createDocument();
         com.itextpdf.text.Document pdfDocument = new com.itextpdf.text.Document();
@@ -45,7 +48,7 @@ public interface PdfService extends DocumentService {
             PdfPCell header = new PdfPCell();
             header.setBackgroundColor(BaseColor.LIGHT_GRAY);
             header.setBorderWidth(2);
-            header.setPhrase(new Phrase(columnTitle));
+            header.setPhrase(new Phrase(columnTitle, FONT));
             table.addCell(header);
         });
     }
@@ -57,7 +60,7 @@ public interface PdfService extends DocumentService {
                     PdfPCell cell = new PdfPCell();
                     cell.setBackgroundColor(BaseColor.WHITE);
                     cell.setBorderWidth(2);
-                    cell.setPhrase(new Phrase(line));
+                    cell.setPhrase(new Phrase(line, FONT));
                     table.addCell(cell);
                 });
     }
