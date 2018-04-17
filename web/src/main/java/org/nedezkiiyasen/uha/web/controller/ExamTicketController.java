@@ -4,6 +4,9 @@ import org.nedezkiiyasen.uha.core.dao.ExamTicketRepository;
 import org.nedezkiiyasen.uha.core.dao.QuestionRepository;
 import org.nedezkiiyasen.uha.core.model.ExamTicket;
 import org.nedezkiiyasen.uha.core.model.Question;
+import org.nedezkiiyasen.uha.core.service.csv.impl.ExamTicketCsvService;
+import org.nedezkiiyasen.uha.core.service.excel.impl.ExamTicketExcelService;
+import org.nedezkiiyasen.uha.core.service.pdf.impl.ExamTicketPdfService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,8 +32,14 @@ public class ExamTicketController extends BaseController<ExamTicket> {
     HttpServletRequest request;
 
     @Autowired
-    public ExamTicketController(ExamTicketRepository examTicketRepository) {
+    public ExamTicketController(ExamTicketRepository examTicketRepository,
+                                ExamTicketCsvService examTicketCsvService,
+                                ExamTicketExcelService examTicketExcelService,
+                                ExamTicketPdfService examTicketPdfService) {
         setRepository(examTicketRepository);
+        setCsvService(examTicketCsvService);
+        setExcelService(examTicketExcelService);
+        setPdfService(examTicketPdfService);
     }
 
     @GetMapping
