@@ -83,6 +83,19 @@
             </ul>
         </div>
     </div>
+    <div class="row text-center">
+        <div class="col-lg-12">
+            <form method="get" action="<s:url value="/${pageName}/csv"/>" style="display: inline-block">
+                <button type="submit" class="btn btn-success">Csv</button>
+            </form>
+            <form method="get" action="<s:url value="/${pageName}/xls"/>" style="display: inline-block">
+                <button type="button" class="btn btn-info">Excel</button>
+            </form>
+            <form method="get" action=""<s:url value="/${pageName}/pdf"/>" style="display: inline-block">
+            <button type="button" class="btn btn-warning">Pdf</button>
+            </form>
+        </div>
+    </div>
 </div>
 <footer class="page-footer">
     <div class="container">
