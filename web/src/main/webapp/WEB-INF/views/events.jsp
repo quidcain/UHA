@@ -58,7 +58,6 @@
                 <h3>
                     <a href="${eventLink}">${event.name}</a>
                 </h3>
-                <p>abc</p>
             </div>
         </c:forEach>
     </div>

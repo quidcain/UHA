@@ -58,7 +58,6 @@
                 <h3>
                     <a href="${eptituderLink}">${eptituder.name}</a>
                 </h3>
-                <p>abc</p>
             </div>
         </c:forEach>
     </div>

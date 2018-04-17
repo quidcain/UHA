@@ -8,7 +8,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Eptituder
+            <h1 class="page-header">Event
                 <small>List</small>
             </h1>
         </div>
