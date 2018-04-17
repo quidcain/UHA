@@ -3,7 +3,7 @@ package org.nedezkiiyasen.uha.core.model;
 import org.junit.Test;
 
 import java.util.Collections;
-import java.util.List;
+import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 
@@ -13,7 +13,7 @@ public class ClanTest {
     private static String SIDE = "side";
     private static String ICO = "ico";
     private static String DESCRIPTION = "description";
-    private static List<Eptituder> EPTITUDERS = Collections.EMPTY_LIST;
+    private static Set<Eptituder> EPTITUDERS = Collections.EMPTY_SET;
 
     @Test
     public void testSettersAndGetters() {

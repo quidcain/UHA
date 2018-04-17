@@ -21,3 +21,7 @@ VALUES ('Avenger\'s creation',
         'finished');
 INSERT INTO eptituders_events
 VALUES (1, 1);
+
+INSERT INTO questions (question) VALUES ('Question #1');
+INSERT INTO questions (question) VALUES ('Question #2');
+INSERT INTO questions (question) VALUES ('Question #3');

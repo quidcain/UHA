@@ -8,7 +8,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Null;
 import javax.validation.constraints.Size;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "eptituders")
@@ -25,7 +26,7 @@ public class Eptituder extends RepositoryItem {
         joinColumns = { @JoinColumn(name = "eptituder_id") },
         inverseJoinColumns = { @JoinColumn(name = "event_id") }
     )
-    private List<Event> events;
+    private Set<Event> events = new HashSet<>();
     @NotBlank
     @Size(max = 255)
     private String name;

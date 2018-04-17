@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import java.sql.Date;
 import java.util.Collections;
-import java.util.List;
+import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 
@@ -17,7 +17,7 @@ public class EventTest {
     private static Integer POINTS = 1;
     private static String STATUS = "status";
     private static String RANK = "rank";
-    private static List<Eptituder> EPTITUDERS = Collections.EMPTY_LIST;
+    private static Set<Eptituder> EPTITUDERS = Collections.EMPTY_SET;
 
     @Test
     public void testSettersAndGetters() {

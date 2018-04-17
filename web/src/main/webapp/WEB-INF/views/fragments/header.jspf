@@ -51,6 +51,9 @@
                 <li>
                     <a href="<s:url value='/contacts'/>">Contact</a>
                 </li>
+                <li>
+                    <a href="<s:url value='/examTickets'/>">Exam tickets</a>
+                </li>
                 <sec:authorize access="!isAuthenticated()">
                 <li>
                     <a href="<s:url value='/login'/>">Log in</a>

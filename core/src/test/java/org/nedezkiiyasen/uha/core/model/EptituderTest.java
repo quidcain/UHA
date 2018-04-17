@@ -3,7 +3,7 @@ package org.nedezkiiyasen.uha.core.model;
 import org.junit.Test;
 
 import java.util.Collections;
-import java.util.List;
+import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 
@@ -16,7 +16,7 @@ public class EptituderTest {
     private static String BIO = "bio";
     private static String RANK = "rank";
     private static Clan CLAN = new Clan();
-    private static List<Event> EVENTS = Collections.EMPTY_LIST;
+    private static Set<Event> EVENTS = Collections.EMPTY_SET;
     private static int POINTS = 1;
 
     @Test

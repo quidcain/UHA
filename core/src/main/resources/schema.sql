@@ -56,22 +56,35 @@ CREATE TABLE `events` (
   PRIMARY KEY (`id`)
 );
 
-DROP TABLE IF EXISTS `exams_eptituders`;
+DROP TABLE IF EXISTS `exams_questions`;
 
-CREATE TABLE `exams_eptituders` (
+CREATE TABLE `exams_questions` (
   `exam_id` bigint(20) NOT NULL,
-  `eptituder_id` bigint(20) NOT NULL,
-  PRIMARY KEY (`exam_id`, `eptituder_id`)
+  `question_id` bigint(20) NOT NULL,
+  PRIMARY KEY (`exam_id`, `question_id`)
 );
 
-DROP TABLE IF EXISTS `exam_questions`;
+DROP TABLE IF EXISTS `exam_tickets_questions`;
 
-CREATE TABLE `exam_questions` (
+CREATE TABLE `exam_tickets_questions` (
+  `exam_ticket_id` bigint(20) NOT NULL,
+  `question_id` bigint(20) NOT NULL,
+  PRIMARY KEY (`exam_ticket_id`, `question_id`)
+);
+
+DROP TABLE IF EXISTS `exam_tickets`;
+
+CREATE TABLE `exam_tickets` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `exam_id` bigint(20) DEFAULT NULL,
+  `rank` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
+DROP TABLE IF EXISTS `questions`;
+
+CREATE TABLE `questions` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `question` text,
-  `answer` text,
-  `status` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 );
 
@@ -79,7 +92,19 @@ DROP TABLE IF EXISTS `exams`;
 
 CREATE TABLE `exams` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `status` tinyint(1) DEFAULT NULL,
-  `rank` varchar(255) DEFAULT NULL,
+  `exam_ticket_id` bigint(20) DEFAULT NULL,
+  `eptituder_id` bigint(20) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
+DROP TABLE IF EXISTS `answers`;
+
+CREATE TABLE `answers` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `exam_id` bigint(20) DEFAULT NULL,
+  `question_id` bigint(20) DEFAULT NULL,
+  `answer` text,
+  `status` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 );
