@@ -2,7 +2,7 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<c:set var="pageName" value="events"/>
+<c:set var="pageName" value="examTickets"/>
 <%@ include file="/WEB-INF/views/fragments/header.jspf"%>
 
 <header>
