@@ -24,6 +24,13 @@
                         <td><form:label path="rank">Rank</form:label></td>
                         <td><form:input path="rank"/></td>
                         <td><form:errors path="rank" cssStyle="color: red;"/></td>
+                        <td>
+                            <select id="questions" name="questionIds" multiple>
+                                <c:forEach items="${questionList}" var="question">
+                                    <option value="${question.id}">${question.question}</option>
+                                </c:forEach>
+                            </select>
+                        </td>
                     </tr>
                 </table>
                 <input type="hidden" name="action" value="update">
