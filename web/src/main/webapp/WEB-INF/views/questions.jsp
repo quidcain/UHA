@@ -10,47 +10,35 @@
     </div>
 </header>
 <div class="container">
-    <h2>Add new exam ticket</h2>
+    <h2>Add new question</h2>
     <s:url var="currentUrl" value='' />
-    <form action="${currentUrl}" method="post">
+    <form:form action="${currentUrl}" method="post" modelAttribute="form">
         <table>
             <tr>
-                <td><label for="rank">Rank</label></td>
+                <td><form:label path="question">Question</form:label></td>
                 <td>
-                    <select id="rank" name="rank">
-                        <option value="A">A</option>
-                        <option value="B">B</option>
-                        <option value="C">C</option>
-                        <option value="D">D</option>
-                        <option value="E">E</option>
-                        <option value="S">S</option>
-                    </select>
-                    <select id="questions" name="questionIds" multiple>
-                        <c:forEach items="${questionList}" var="question">
-                            <option value="${question.id}">${question.question}</option>
-                        </c:forEach>
-                    </select>
+                    <form:input path="question"/>
                 </td>
             </tr>
         </table>
         <input type="submit">
-    </form>
+    </form:form>
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Exam ticket
+            <h1 class="page-header">Question
                 <small>List</small>
             </h1>
         </div>
     </div>
     <div class="row">
-        <c:forEach items="${examTicketList}" var="examTicket">
+        <c:forEach items="${questionList}" var="question">
             <div class="col-md-3 portfolio-item">
-                <s:url value="/examTickets/${examTicket.id}" var="examTicketLink"/>
-                <a href="${examTicketLink}">
+                <s:url value="/questions/${question.id}" var="questionLink"/>
+                <a href="${questionLink}">
                     <img class="img-responsive" src="./images/hero11.jpg" alt="">
                 </a>
                 <h3>
-                    <a href="${examTicketLink}">${examTicket.rank}</a>
+                    <a href="${questionLink}">${question.question}</a>
                 </h3>
             </div>
         </c:forEach>
@@ -82,22 +70,16 @@
             </ul>
         </div>
     </div>
-    <div class="row">
-        <div class="col-lg-12">
-            <s:url value="/questions" var="questionsLink"/>
-            <h3><a href="${questionsLink}">Add questions</a></h3>
-        </div>
-    </div>
     <div class="row text-center">
         <div class="col-lg-12">
-            <form method="get" action="<s:url value="/${pageName}/csv"/>" style="display: inline-block">
+            <form method="get" action="<s:url value="/questions/csv"/>" style="display: inline-block">
                 <button type="submit" class="btn btn-success">Csv</button>
             </form>
-            <form method="get" action="<s:url value="/${pageName}/xls"/>" style="display: inline-block">
-                <button type="button" class="btn btn-info">Excel</button>
+            <form method="get" action="<s:url value="/questions/xls"/>" style="display: inline-block">
+                <button type="submit" class="btn btn-info">Excel</button>
             </form>
-            <form method="get" action="<s:url value="/${pageName}/pdf"/>" style="display: inline-block">
-            <button type="button" class="btn btn-warning">Pdf</button>
+            <form method="get" action="<s:url value="/questions/pdf"/>" style="display: inline-block">
+                <button type="submit" class="btn btn-warning">Pdf</button>
             </form>
         </div>
     </div>
