@@ -94,10 +94,10 @@
                 <button type="submit" class="btn btn-success">Csv</button>
             </form>
             <form method="get" action="<s:url value="/${pageName}/xls"/>" style="display: inline-block">
-                <button type="button" class="btn btn-info">Excel</button>
+                <button type="submit" class="btn btn-info">Excel</button>
             </form>
             <form method="get" action="<s:url value="/${pageName}/pdf"/>" style="display: inline-block">
-            <button type="button" class="btn btn-warning">Pdf</button>
+            <button type="submit" class="btn btn-warning">Pdf</button>
             </form>
         </div>
     </div>
