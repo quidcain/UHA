@@ -96,7 +96,7 @@
             <form method="get" action="<s:url value="/${pageName}/xls"/>" style="display: inline-block">
                 <button type="button" class="btn btn-info">Excel</button>
             </form>
-            <form method="get" action=""<s:url value="/${pageName}/pdf"/>" style="display: inline-block">
+            <form method="get" action="<s:url value="/${pageName}/pdf"/>" style="display: inline-block">
             <button type="button" class="btn btn-warning">Pdf</button>
             </form>
         </div>
