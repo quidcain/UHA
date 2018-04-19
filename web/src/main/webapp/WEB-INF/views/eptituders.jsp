@@ -77,12 +77,4 @@
         </div>
     </div>
 </div>
-<footer class="page-footer">
-    <div class="container">
-        <p><span class="glyphicon glyphicon-globe"></span>  Yasen' Bloodislav Danikman  <span class="glyphicon glyphicon-globe"></span>
-    </div>
-</footer>
-<script src="<s:url value='/resources/js/jquery-1.11.3.min.js'/>"></script>
-<script src="<s:url value='/resources/js/bootstrap.min.js'/>"></script>
-</body>
-</html>
+<%@ include file="/WEB-INF/views/fragments/footer.jspf"%>

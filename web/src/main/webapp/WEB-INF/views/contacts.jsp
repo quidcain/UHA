@@ -16,12 +16,5 @@
         </div>
     </div>
     <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A3f66f056c5cde91b16c63d9d19f20d34d0bf867a0b2b8688bb69609f68c930b8&amp;width=100%25&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
-    <footer class="page-footer">
-        <div class="container">
-            <p><span class="glyphicon glyphicon-globe"></span>  Yasen' Bloodislav Danikman  <span class="glyphicon glyphicon-globe"></span>
-        </div>
-    </footer>
-    <script src="<s:url value='/resources/js/jquery-1.11.3.min.js'/>"></script>
-    <script src="<s:url value='/resources/js/bootstrap.min.js'/>"></script>
-</body>
-</html>
+
+<%@ include file="/WEB-INF/views/fragments/footer.jspf"%>
