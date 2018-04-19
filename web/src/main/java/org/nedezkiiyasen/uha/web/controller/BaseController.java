@@ -5,7 +5,10 @@ import org.nedezkiiyasen.uha.core.service.DocumentService;
 import org.nedezkiiyasen.uha.core.service.csv.CsvService;
 import org.nedezkiiyasen.uha.core.service.excel.ExcelService;
 import org.nedezkiiyasen.uha.core.service.pdf.PdfService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -23,11 +26,14 @@ public abstract class BaseController<T extends RepositoryItem> {
     private PdfService pdfService;
 
     @GetMapping
-    public String get(Model model) {
+    public String get(Model model, @PageableDefault(size = 2) Pageable pageable) {
         if (!model.containsAttribute("form")) {
             model.addAttribute("form", createForm());
         }
-        model.addAttribute(repository.findAll());
+        Page<T> all = repository.findAll(pageable);
+        model.addAttribute("currentPage", pageable.getPageNumber() + 1);
+        model.addAttribute("totalPages", all.getTotalPages());
+        model.addAttribute(all.getContent());
         return getMultipleViewName();
     }
 

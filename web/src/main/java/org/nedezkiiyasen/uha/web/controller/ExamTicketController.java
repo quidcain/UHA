@@ -8,6 +8,7 @@ import org.nedezkiiyasen.uha.core.service.csv.impl.ExamTicketCsvService;
 import org.nedezkiiyasen.uha.core.service.excel.impl.ExamTicketExcelService;
 import org.nedezkiiyasen.uha.core.service.pdf.impl.ExamTicketPdfService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -44,9 +45,9 @@ public class ExamTicketController extends BaseController<ExamTicket> {
 
     @GetMapping
     @Override
-    public String get(Model model) {
+    public String get(Model model, Pageable pageable) {
         model.addAttribute(questionRepository.findAll());
-        return super.get(model);
+        return super.get(model, pageable);
     }
 
     @PostMapping
