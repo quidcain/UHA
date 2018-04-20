@@ -3,10 +3,7 @@ package org.nedezkiiyasen.uha.core.model;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.sql.Date;
@@ -18,7 +15,7 @@ import java.util.Set;
 @Getter
 @Setter
 public class Event extends RepositoryItem {
-    @ManyToMany(mappedBy = "events", fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "events", fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     private Set<Eptituder> eptituders = new HashSet<>();
     @NotBlank
     @Size(max = 255)

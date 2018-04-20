@@ -8,46 +8,29 @@ import org.nedezkiiyasen.uha.core.service.csv.impl.ExamTicketCsvService;
 import org.nedezkiiyasen.uha.core.service.excel.impl.ExamTicketExcelService;
 import org.nedezkiiyasen.uha.core.service.pdf.impl.ExamTicketPdfService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.util.Optional;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Controller
 @RequestMapping("/examTickets")
-public class ExamTicketController extends BaseController<ExamTicket> {
-    private String[] EMPTY_STRING_ARRAY = new String[0];
-
-    @Autowired
-    private QuestionRepository questionRepository;
-
-    @Autowired
-    HttpServletRequest request;
+    public class ExamTicketController extends ParentWithChildsController<ExamTicket, Question> {
 
     @Autowired
     public ExamTicketController(ExamTicketRepository examTicketRepository,
                                 ExamTicketCsvService examTicketCsvService,
                                 ExamTicketExcelService examTicketExcelService,
-                                ExamTicketPdfService examTicketPdfService) {
+                                ExamTicketPdfService examTicketPdfService,
+                                QuestionRepository questionRepository) {
         setRepository(examTicketRepository);
         setCsvService(examTicketCsvService);
         setExcelService(examTicketExcelService);
         setPdfService(examTicketPdfService);
-    }
-
-    @GetMapping
-    @Override
-    public String get(Model model, Pageable pageable) {
-        model.addAttribute(questionRepository.findAll());
-        return super.get(model, pageable);
+        setChildRepository(questionRepository);
     }
 
     @PostMapping
@@ -55,14 +38,8 @@ public class ExamTicketController extends BaseController<ExamTicket> {
     public String create(@ModelAttribute("form") @Valid ExamTicket examTicket,
                          BindingResult result,
                          RedirectAttributes redirectAttrs) {
-        getQuestionStream().forEach(examTicket.getQuestions()::add);
+        getChoosedChildsStream().forEach(examTicket.getQuestions()::add);
         return super.create(examTicket, result, redirectAttrs);
-    }
-
-    @GetMapping(value = "/{id}")
-    public String getById(@PathVariable Integer id, Model model) {
-        model.addAttribute(questionRepository.findAll());
-        return super.getById(id, model);
     }
 
     @PostMapping(value = "/{id}")
@@ -71,19 +48,14 @@ public class ExamTicketController extends BaseController<ExamTicket> {
                                @ModelAttribute("form") @Valid ExamTicket examTicket,
                                BindingResult result,
                                RedirectAttributes redirectAttrs) {
-        examTicket.setQuestions(getQuestionStream()
+        examTicket.setQuestions(getChoosedChildsStream()
                 .collect(Collectors.toSet()));
         return super.updateDelete(action, id, examTicket, result, redirectAttrs);
     }
 
-    private Stream<Question> getQuestionStream() {
-        return Stream.of(Optional.ofNullable(
-                request.getParameterValues("questionIds"))
-                .orElseGet(() -> EMPTY_STRING_ARRAY))
-                .map(Integer::parseInt)
-                .map(questionRepository::findById)
-                .filter(Optional::isPresent)
-                .map(Optional::get);
+    @Override
+    protected String getChildIdsParameter() {
+        return "questionIds";
     }
 
     @Override

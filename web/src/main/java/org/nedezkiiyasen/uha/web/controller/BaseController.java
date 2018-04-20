@@ -20,7 +20,7 @@ import javax.validation.Valid;
 import java.io.IOException;
 
 public abstract class BaseController<T extends RepositoryItem> {
-    private JpaRepository<T, Integer> repository;
+    protected JpaRepository<T, Integer> repository;
     private CsvService csvService;
     private ExcelService excelService;
     private PdfService pdfService;
@@ -121,10 +121,10 @@ public abstract class BaseController<T extends RepositoryItem> {
     protected void setCsvService(CsvService csvService) {
         this.csvService = csvService;
     }
-    public void setExcelService(ExcelService excelService) {
+    protected void setExcelService(ExcelService excelService) {
         this.excelService = excelService;
     }
-    public void setPdfService(PdfService pdfService) {
+    protected void setPdfService(PdfService pdfService) {
         this.pdfService = pdfService;
     }
 }

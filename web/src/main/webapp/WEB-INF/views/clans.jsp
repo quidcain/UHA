@@ -33,6 +33,16 @@
                 <td><form:textarea path="description"></form:textarea></td>
                 <td><form:errors path="description" cssStyle="color: red;"/></td>
             </tr>
+            <tr>
+                <td>Eptituders</td>
+                <td>
+                    <select id="eptituders" name="eptituderIds" multiple>
+                        <c:forEach items="${eptituderList}" var="eptituder">
+                            <option value="${eptituder.id}">${eptituder.name}</option>
+                        </c:forEach>
+                    </select>
+                </td>
+            </tr>
         </table>
         <input type="submit">
     </form:form>

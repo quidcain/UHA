@@ -36,7 +36,6 @@ public class Eptituder extends RepositoryItem {
     @Size(max = 255)
     private String eptitudes;
     private String ico;
-    @NotBlank
     @Size(max = 255)
     private String bio;
     @Null
