@@ -2,7 +2,7 @@
 <div class="row text-center">
     <div class="col-lg-12">
         <ul class="pagination">
-            <c:if test="${currentPage != 1}">
+            <c:if test="${currentPage != 1 && totalPages != 0}">
                 <li>
                     <a href="#">&laquo;</a>
                 </li>
@@ -25,7 +25,7 @@
                     <a href="${pagingLink}?page=${i}">${i}</a>
                 </li>
             </c:forEach>
-            <c:if test="${currentPage != totalPages}">
+            <c:if test="${currentPage != totalPages && totalPages != 0}">
                 <li>
                     <a href="#">&raquo;</a>
                 </li>
