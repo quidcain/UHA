@@ -5,13 +5,14 @@ import org.nedezkiiyasen.uha.core.model.Eptituder;
 import org.nedezkiiyasen.uha.core.service.csv.impl.EptituderCsvService;
 import org.nedezkiiyasen.uha.core.service.excel.impl.EptituderExcelService;
 import org.nedezkiiyasen.uha.core.service.pdf.impl.EptituderPdfService;
+import org.nedezkiiyasen.uha.web.dto.EptituderDto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 @RequestMapping("/eptituders")
-public class EptituderController extends BaseController<Eptituder> {
+public class EptituderController extends BaseController<Eptituder, EptituderDto> {
     @Autowired
     public EptituderController(EptituderRepository eptituderRepository,
                                EptituderCsvService eptituderCsvService,
@@ -24,12 +25,17 @@ public class EptituderController extends BaseController<Eptituder> {
     }
 
     @Override
-    protected Eptituder createForm() {
-        return new Eptituder();
+    protected Class<Eptituder> getEntityClass() {
+        return Eptituder.class;
     }
 
     @Override
-    protected String getSingleViewName() {
-        return Eptituder.class.getSimpleName().toLowerCase();
+    protected Class<EptituderDto> getDtoClass() {
+        return EptituderDto.class;
+    }
+
+    @Override
+    protected String getViewName() {
+        return "eptituders";
     }
 }

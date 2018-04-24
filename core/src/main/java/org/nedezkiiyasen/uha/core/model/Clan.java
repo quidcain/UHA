@@ -12,7 +12,12 @@ import java.util.Set;
 @Getter
 @Setter
 public class Clan extends RepositoryItem {
-    @OneToMany(mappedBy = "clan", fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "eptituders_clans",
+            joinColumns = { @JoinColumn(name = "clan_id") },
+            inverseJoinColumns = { @JoinColumn(name = "eptituder_id") }
+    )
     private Set<Eptituder> eptituders = new HashSet<>();
     private String name;
     private String side;

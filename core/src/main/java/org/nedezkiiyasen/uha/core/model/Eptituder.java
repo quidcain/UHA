@@ -12,11 +12,15 @@ import java.util.Set;
 @Table(name = "eptituders")
 @Getter
 @Setter
-@ToString(exclude = {"clan", "events"})
+@ToString(exclude = {"clans", "events"})
 public class Eptituder extends RepositoryItem {
-    @ManyToOne
-    @JoinColumn(name = "clan_id")
-    private Clan clan;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "eptituders_clans",
+            joinColumns = { @JoinColumn(name = "eptituder_id") },
+    inverseJoinColumns = { @JoinColumn(name = "clan_id") }
+    )
+    private Set<Clan> clans = new HashSet<>();
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
         name = "eptituders_events",

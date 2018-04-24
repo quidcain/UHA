@@ -12,7 +12,8 @@ VALUES ('Alethunder', 'good', '$2a$10$2X2ATtXkPTNUGGFM3rhQYOq9QVp77bjr9BmzIJh9YA
 insert into eptituder_roles values ('Alethunder', 'ROLE_USER');
 
 INSERT INTO clans (name, side) VALUES ('akatsuke', 'evil');
-UPDATE eptituders SET clan_id = 1 WHERE id=2;
+INSERT INTO eptituders_clans
+VALUES (2, 1);
 
 INSERT INTO events (name, description, date, status)
 VALUES ('Avenger\'s creation',

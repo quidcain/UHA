@@ -1,3 +1,12 @@
+DROP TABLE IF EXISTS `eptituders_clans`;
+
+CREATE TABLE `eptituders_clans` (
+  `eptituder_id` bigint(20) NOT NULL,
+  `clan_id` bigint(20) NOT NULL,
+  PRIMARY KEY (`eptituder_id`, `clan_id`)
+);
+
+
 DROP TABLE IF EXISTS `clans`;
 
 CREATE TABLE `clans` (
@@ -31,7 +40,6 @@ CREATE TABLE `eptituders` (
   `bio` text,
   `rank` varchar(255) DEFAULT NULL,
   `points` int(11) DEFAULT NULL,
-  `clan_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
 );
 

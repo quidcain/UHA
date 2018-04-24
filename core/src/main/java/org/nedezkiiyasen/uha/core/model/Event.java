@@ -13,7 +13,12 @@ import java.util.Set;
 @Getter
 @Setter
 public class Event extends RepositoryItem {
-    @ManyToMany(mappedBy = "events", fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "eptituders_events",
+            joinColumns = { @JoinColumn(name = "event_id") },
+            inverseJoinColumns = { @JoinColumn(name = "eptituder_id") }
+    )
     private Set<Eptituder> eptituders = new HashSet<>();
     private String name;
     private String ico;

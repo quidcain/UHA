@@ -14,7 +14,7 @@ import java.util.Set;
 @Setter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class EptituderDto extends Dto {
-    private ClanDto clan;
+    private Set<ClanDto> clans = new HashSet<>();
     private Set<EventDto> events = new HashSet<>();
     @NotBlank
     @Size(max = 255)

@@ -5,13 +5,14 @@ import org.nedezkiiyasen.uha.core.model.Question;
 import org.nedezkiiyasen.uha.core.service.csv.impl.QuestionCsvService;
 import org.nedezkiiyasen.uha.core.service.excel.impl.QuestionExcelService;
 import org.nedezkiiyasen.uha.core.service.pdf.impl.QuestionPdfService;
+import org.nedezkiiyasen.uha.web.dto.QuestionDto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 @RequestMapping("/questions")
-public class QuestionController extends BaseController<Question> {
+public class QuestionController extends BaseController<Question, QuestionDto> {
     @Autowired
     public QuestionController(QuestionRepository questionRepository,
                               QuestionCsvService questionCsvService,
@@ -24,12 +25,17 @@ public class QuestionController extends BaseController<Question> {
     }
 
     @Override
-    protected Question createForm() {
-        return new Question();
+    protected Class<Question> getEntityClass() {
+        return Question.class;
     }
 
     @Override
-    protected String getSingleViewName() {
-        return Question.class.getSimpleName().toLowerCase();
+    protected Class<QuestionDto> getDtoClass() {
+        return QuestionDto.class;
+    }
+
+    @Override
+    protected String getViewName() {
+        return "questions";
     }
 }
