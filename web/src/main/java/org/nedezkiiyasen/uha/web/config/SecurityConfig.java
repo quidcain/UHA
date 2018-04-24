@@ -11,8 +11,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.sql.DataSource;
 
-import static org.springframework.http.HttpMethod.POST;
-
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -31,13 +29,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-            .antMatchers("/").permitAll()
-            .antMatchers(POST, "/events/**").hasRole("ADMIN")
-            .antMatchers(POST, "/eptituders/**", "/clans/**").hasRole("USER")
-            .and()
-            .formLogin()
-                .loginPage("/login")
-                .permitAll()
+            .antMatchers("/**").permitAll()
+            //.antMatchers(POST, "/events/**").hasRole("ADMIN")
+            //.antMatchers(POST, "/eptituders/**", "/clans/**").hasRole("USER")
+            //.and()
+            //.formLogin()
+                //.loginPage("/login")
+                //.permitAll()
             .and()
                 .csrf().disable();
     }
