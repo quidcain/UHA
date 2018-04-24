@@ -4,8 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,13 +14,8 @@ import java.util.Set;
 public class Clan extends RepositoryItem {
     @OneToMany(mappedBy = "clan", fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     private Set<Eptituder> eptituders = new HashSet<>();
-    @NotBlank
-    @Size(max = 255)
     private String name;
-    @NotBlank
-    @Size(max = 255)
     private String side;
     private String ico;
-    @Size(max = 255)
     private String description;
 }

@@ -4,8 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -17,12 +15,8 @@ import java.util.Set;
 public class Event extends RepositoryItem {
     @ManyToMany(mappedBy = "events", fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     private Set<Eptituder> eptituders = new HashSet<>();
-    @NotBlank
-    @Size(max = 255)
     private String name;
     private String ico;
-    @NotBlank
-    @Size(max = 255)
     private String description;
     private Date date;
     private Integer points;
