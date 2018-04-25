@@ -15,10 +15,12 @@ subprojects {
     sourceCompatibility = 1.8
     targetCompatibility = 1.8
     dependencies {
-        compile 'ch.qos.logback:logback-classic:1.2.3'
-        compileOnly 'org.projectlombok:lombok:1.16.20'
-        testCompile 'junit:junit:4.12'
-        testCompile "org.springframework:spring-test:$springVersion"
-        compile 'org.hibernate:hibernate-validator:6.0.7.Final'
+        if (project.name != 'spa') {
+            compile 'ch.qos.logback:logback-classic:1.2.3'
+            compileOnly 'org.projectlombok:lombok:1.16.20'
+            testCompile 'junit:junit:4.12'
+            testCompile "org.springframework:spring-test:$springVersion"
+            compile 'org.hibernate:hibernate-validator:6.0.7.Final'
+        }
     }
 }

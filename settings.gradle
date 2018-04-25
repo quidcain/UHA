@@ -1,3 +1,4 @@
 rootProject.name = 'uha'
 
-include 'core', 'api'
+include 'core', 'api', 'spa'
+

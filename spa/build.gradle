@@ -1,0 +1,35 @@
+apply plugin: 'war'
+
+def ngDir = "$projectDir/src/main/ng"
+
+processResources {
+    dependsOn "buildAngular"
+}
+
+task buildAngular(type: Exec) {
+    dependsOn "installAngular"
+    workingDir "$ngDir"
+    inputs.dir "$ngDir"
+    group = BasePlugin.BUILD_GROUP
+    if (System.getProperty("os.name").toUpperCase().contains("WINDOWS")){
+        commandLine "npm.cmd", "run", "build"
+    } else {
+        commandLine "npm", "run", "build"
+    }
+}
+
+task installAngular(type: Exec) {
+    workingDir "$ngDir"
+    inputs.dir "$ngDir"
+    group = BasePlugin.BUILD_GROUP
+    if (System.getProperty("os.name").toUpperCase().contains("WINDOWS")){
+        commandLine "npm.cmd", "install"
+    } else {
+        commandLine "npm", "install"
+    }
+}
+
+war {
+    archiveName = 'uhaSpa.war'
+    from "$ngDir/dist"
+}

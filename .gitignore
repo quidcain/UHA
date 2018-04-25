@@ -3,5 +3,7 @@
 .gradle
 core/build
 api/build
+spa/build
 core/out
 api/out
+spa/out
