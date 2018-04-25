@@ -2,6 +2,6 @@
 .idea
 .gradle
 core/build
-web/build
+api/build
 core/out
-web/out
+api/out
