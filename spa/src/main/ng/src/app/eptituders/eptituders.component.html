@@ -1,0 +1,11 @@
+<p>
+  eptituders works!
+</p>
+
+<ul class="heroes">
+  <li *ngFor="let eptituder of eptitudersPage.eptituders">
+    <a routerLink="/eptituders/{{eptituder.id}}">
+      <span class="badge">{{eptituder.id}}</span> {{eptituder.name}}
+    </a>
+  </li>
+</ul>

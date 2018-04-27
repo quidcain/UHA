@@ -1,0 +1,26 @@
+<div *ngIf="eptituder">
+  <h2>{{ eptituder.name }} Details</h2>
+  <div><span>id: </span>{{eptituder.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="eptituder.name" placeholder="name"/>
+    </label>
+  </div>
+  <div>
+    <label>side:
+      <input [(ngModel)]="eptituder.side" placeholder="side"/>
+    </label>
+  </div>
+  <div>
+    <label>eptitudes:
+      <input [(ngModel)]="eptituder.eptitudes" placeholder="eptitudes"/>
+    </label>
+  </div>
+  <div>
+    <label>bio:
+      <input [(ngModel)]="eptituder.bio" placeholder="bio"/>
+    </label>
+  </div>
+  <button (click)="goBack()">go back</button>
+  <button (click)="save()">save</button>
+</div>
