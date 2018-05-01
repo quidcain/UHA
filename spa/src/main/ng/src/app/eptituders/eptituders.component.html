@@ -28,7 +28,7 @@
 <button (click)="save()">save</button>
 
 <ul class="heroes">
-  <li *ngFor="let eptituder of eptitudersPage.eptituders">
+  <li *ngFor="let eptituder of eptituderPage.eptituders">
     <a routerLink="/eptituders/{{eptituder.id}}">
       <span class="badge">{{eptituder.id}}</span> {{eptituder.name}}
     </a>

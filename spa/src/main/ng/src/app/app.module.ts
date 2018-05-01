@@ -11,6 +11,9 @@ import { ContactsComponent } from './contacts/contacts.component';
 import { EptitudersComponent } from './eptituders/eptituders.component';
 import {EptituderService} from "./eptituder.service";
 import { EptituderComponent } from './eptituder/eptituder.component';
+import {ClansComponent} from "./clans/clans.component";
+import {ClanService} from "./clan.service";
+import {ClanComponent} from "./clan/clan.component";
 
 
 @NgModule({
@@ -25,9 +28,14 @@ import { EptituderComponent } from './eptituder/eptituder.component';
     HomeComponent,
     ContactsComponent,
     EptitudersComponent,
-    EptituderComponent
+    EptituderComponent,
+    ClansComponent,
+    ClanComponent
   ],
-  providers: [EptituderService],
+  providers: [
+    EptituderService,
+    ClanService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

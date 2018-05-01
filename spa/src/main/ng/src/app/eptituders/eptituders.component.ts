@@ -10,7 +10,7 @@ import {Eptituder} from "../eptituder";
 })
 export class EptitudersComponent implements OnInit {
   @Input() newEptituder: Eptituder;
-  eptitudersPage: EptituderPage;
+  eptituderPage: EptituderPage;
 
   constructor(private eptituderService: EptituderService) { }
 
@@ -21,12 +21,10 @@ export class EptitudersComponent implements OnInit {
 
   getEptituders(): void {
     this.eptituderService.getEptituders()
-      .subscribe(eptitudersPage => this.eptitudersPage = eptitudersPage);
+      .subscribe(eptituderPage => this.eptituderPage = eptituderPage);
   }
 
   save() {
-    console.log("created");
-    console.log(this.newEptituder);
     this.eptituderService.addEptituder(this.newEptituder)
       .subscribe();
   }

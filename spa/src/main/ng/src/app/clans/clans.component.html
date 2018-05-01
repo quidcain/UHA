@@ -1,0 +1,32 @@
+<p>
+  Clans works!
+</p>
+  New one:
+<div>
+  <label>name:
+    <input [(ngModel)]="newClan.name" placeholder="name"/>
+  </label>
+</div>
+<div>
+  <label>side:
+    <select [(ngModel)]="newClan.side">
+      <option value="good">good</option>
+      <option value="evil">evil</option>
+    </select>
+  </label>
+</div>
+<div>
+  <label>description:
+    <textarea [(ngModel)]="newClan.description" placeholder="description"></textarea>
+  </label>
+</div>
+
+<button (click)="save()">save</button>
+
+<ul class="heroes">
+  <li *ngFor="let clan of clanPage.clans">
+    <a routerLink="/clans/{{clan.id}}">
+      <span class="badge">{{clan.id}}</span> {{clan.name}}
+    </a>
+  </li>
+</ul>

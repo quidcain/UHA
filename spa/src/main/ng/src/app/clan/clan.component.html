@@ -1,0 +1,30 @@
+<div *ngIf="clan">
+  <h2>{{ clan.name }} Details</h2>
+  <div>
+    <label>name:
+      <input [(ngModel)]="clan.name" placeholder="name"/>
+    </label>
+  </div>
+  <div>
+    <label>side:
+      <select [(ngModel)]="clan.side">
+        <option value="good">good</option>
+        <option value="evil">evil</option>
+      </select>
+    </label>
+  </div>
+  <div>
+    <label>eptitudes:
+      <textarea [(ngModel)]="clan.description" placeholder="eptitudes"></textarea>
+    </label>
+  </div>
+  <button (click)="goBack()">go back</button>
+  <button (click)="save()">save</button>
+
+  Clan's eptituders
+  <li *ngFor="let eptituder of clan.eptituders">
+    <a routerLink="/eptituders/{{eptituder.id}}">
+      <span class="badge">{{eptituder.id}}</span> {{eptituder.name}}
+    </a>
+  </li>
+</div>

@@ -5,6 +5,8 @@ import { HomeComponent }   from './home/home.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import {EptitudersComponent} from "./eptituders/eptituders.component";
 import {EptituderComponent} from "./eptituder/eptituder.component";
+import {ClansComponent} from "./clans/clans.component";
+import {ClanComponent} from "./clan/clan.component";
 
 
 const routes: Routes = [
@@ -13,9 +15,9 @@ const routes: Routes = [
   { path: 'contacts', component: ContactsComponent },
   { path: 'eptituders', component: EptitudersComponent },
   { path: 'eptituders/:id', component: EptituderComponent },
-  /*{ path: 'clans/', component: ClansComponent },
-  { path: 'clans/:id', component: ClanDetailComponent },
-  { path: 'events/', component: EventsComponent },
+  { path: 'clans', component: ClansComponent },
+  { path: 'clans/:id', component: ClanComponent },
+  /*{ path: 'events/', component: EventsComponent },
   { path: 'events/:id', component: EventDetailComponent },
   { path: 'examTemplates/', component: ExamTemplatesComponent },
   { path: 'examTemplates/:id', component: ExamTemplateDetailComponent },
