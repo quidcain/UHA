@@ -20,6 +20,15 @@
     <textarea [(ngModel)]="newClan.description" placeholder="description"></textarea>
   </label>
 </div>
+<div>
+  <label>eptituders:
+    <select multiple [(ngModel)]="newClan.eptituders">
+      <option *ngFor="let eptituder of eptituderPage.eptituders" [ngValue]="eptituder">
+        {{eptituder.name}}
+      </option>
+    </select>
+  </label>
+</div>
 
 <button (click)="save()">save</button>
 

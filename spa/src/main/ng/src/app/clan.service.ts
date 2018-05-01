@@ -30,6 +30,7 @@ export class ClanService {
   }
 
   updateClan(clan: Clan): Observable<Clan> {
-    return this.http.put<Clan>(this.clansUrl, clan, httpOptions);
+    const url = `${this.clansUrl}/${clan.id}`;
+    return this.http.put<Clan>(url, clan, httpOptions);
   }
 }

@@ -30,6 +30,7 @@ export class EptituderService {
   }
 
   updateEptituder(eptituder: Eptituder): Observable<Eptituder> {
-    return this.http.put<Eptituder>(this.eptitudersUrl, eptituder, httpOptions);
+    const url = `${this.eptitudersUrl}/${eptituder.id}`;
+    return this.http.put<Eptituder>(url, eptituder, httpOptions);
   }
 }

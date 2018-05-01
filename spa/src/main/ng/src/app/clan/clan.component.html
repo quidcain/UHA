@@ -14,10 +14,20 @@
     </label>
   </div>
   <div>
-    <label>eptitudes:
-      <textarea [(ngModel)]="clan.description" placeholder="eptitudes"></textarea>
+    <label>description:
+      <textarea [(ngModel)]="clan.description" placeholder="description"></textarea>
     </label>
   </div>
+  <div>
+    <label>eptituders:
+      <select multiple [(ngModel)]="clan.eptituders">
+        <option *ngFor="let eptituder of eptituderPage.eptituders" [ngValue]="eptituder">
+          {{eptituder.name}}
+        </option>
+      </select>
+    </label>
+  </div>
+
   <button (click)="goBack()">go back</button>
   <button (click)="save()">save</button>
 
