@@ -1,3 +1,6 @@
+import {Clan} from "./clan";
+import {Event} from "./event";
+
 export class Eptituder {
   id: number;
   name: string;
@@ -7,4 +10,6 @@ export class Eptituder {
   bio: string;
   rank: string;
   points: string;
+  clans: Clan[];
+  events: Event[];
 }

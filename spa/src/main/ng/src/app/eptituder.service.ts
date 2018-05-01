@@ -12,7 +12,7 @@ const httpOptions = {
 @Injectable()
 export class EptituderService {
 
-  private eptitudersUrl = '../uha/api/eptituders';  // URL to web api
+  private eptitudersUrl = '/uha/api/eptituders';  // URL to web api
 
   constructor(private http: HttpClient) {}
 
@@ -29,7 +29,7 @@ export class EptituderService {
     return this.http.post<Eptituder>(this.eptitudersUrl, eptituder, httpOptions);
   }
 
-  updateEptituder(eptituder: Eptituder): Observable<any> {
-    return this.http.put(this.eptitudersUrl, eptituder, httpOptions);
+  updateEptituder(eptituder: Eptituder): Observable<Eptituder> {
+    return this.http.put<Eptituder>(this.eptitudersUrl, eptituder, httpOptions);
   }
 }

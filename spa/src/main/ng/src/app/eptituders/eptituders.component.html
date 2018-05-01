@@ -1,6 +1,31 @@
 <p>
-  eptituders works!
+  Eptituders works!
 </p>
+  New one:
+<div>
+  <label>name:
+    <input [(ngModel)]="newEptituder.name" placeholder="name"/>
+  </label>
+</div>
+<div>
+  <label>side:
+    <select [(ngModel)]="newEptituder.side">
+      <option value="good">good</option>
+      <option value="evil">evil</option>
+    </select>
+  </label>
+</div>
+<div>
+  <label>eptitudes:
+    <textarea [(ngModel)]="newEptituder.eptitudes" placeholder="eptitudes"></textarea>
+  </label>
+</div>
+<div>
+  <label>bio:
+    <textarea [(ngModel)]="newEptituder.bio" placeholder="bio"></textarea>
+  </label>
+</div>
+<button (click)="save()">save</button>
 
 <ul class="heroes">
   <li *ngFor="let eptituder of eptitudersPage.eptituders">

@@ -35,7 +35,7 @@ export class EptituderComponent implements OnInit {
   }
 
   save() {
-    this.eptituderService.addEptituder(this.eptituder)
+    this.eptituderService.updateEptituder(this.eptituder)
       .subscribe(() => this.goBack());
   }
 }
