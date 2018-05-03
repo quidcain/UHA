@@ -1,0 +1,17 @@
+header {
+  background-image: url('../../assets/images/avengers.jpg');
+}
+.item-1 {
+  background: url('../../assets/images/iron_man_on_black.jpg');
+  background-color: aliceblue;
+}
+
+.item-2 {
+  background: url('../../assets/images/cap.jpg');
+  background-color: blue;
+}
+
+.item-3 {
+  background: url('../../assets/images/spider_man_rise_of_electro.jpg');
+  background-color: blueviolet;
+}

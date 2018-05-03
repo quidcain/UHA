@@ -12,7 +12,7 @@ const httpOptions = {
 @Injectable()
 export class EptituderService {
 
-  private eptitudersUrl = '/uha/api/eptituders';  // URL to web api
+  private eptitudersUrl = '/api/eptituders';  // URL to web api
 
   constructor(private http: HttpClient) {}
 

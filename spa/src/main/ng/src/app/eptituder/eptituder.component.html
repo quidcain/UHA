@@ -1,35 +1,47 @@
-<div *ngIf="eptituder">
-  <h2>{{ eptituder.name }} Details</h2>
-  <div>
-    <label>name:
-      <input [(ngModel)]="eptituder.name" placeholder="name"/>
-    </label>
+<header>
+  <div class="header-content">
   </div>
-  <div>
-    <label>side:
-      <select [(ngModel)]="eptituder.side">
-        <option value="good">good</option>
-        <option value="evil">evil</option>
-      </select>
-    </label>
+</header>
+<div class="container" *ngIf="eptituder">
+  <h2>Add new eptituder</h2>
+  <table>
+    <tr>
+      <td><label>Name</label></td>
+      <td><input [(ngModel)]="eptituder.name"/></td>
+    </tr>
+    <tr>
+      <td><label>Side</label></td>
+      <td>
+        <select [(ngModel)]="eptituder.side">
+          <option value="good">good</option>
+          <option value="evil">evil</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td><label>Eptitudes</label></td>
+      <td><textarea [(ngModel)]="eptituder.eptitudes"></textarea></td>
+    </tr>
+    <tr>
+      <td><label>Biograpy</label></td>
+      <td><textarea [(ngModel)]="eptituder.bio"></textarea></td>
+    </tr>
+  </table>
+  <input type="submit" (click)="save()" value="save">
+  <button (click)="goBack()">&larr;</button>
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Event
+        <small>List</small>
+      </h1>
+    </div>
   </div>
-  <div>
-    <label>eptitudes:
-      <textarea [(ngModel)]="eptituder.eptitudes" placeholder="eptitudes"></textarea>
-    </label>
-  </div>
-  <div>
-    <label>bio:
-      <textarea [(ngModel)]="eptituder.bio" placeholder="bio"></textarea>
-    </label>
-  </div>
-  <button (click)="goBack()">go back</button>
-  <button (click)="save()">save</button>
-
-  Eptituder's events
-  <li *ngFor="let event of eptituder.events">
-    <a routerLink="/events/{{event.id}}">
-      <span class="badge">{{event.id}}</span> {{event.name}}
-    </a>
-  </li>
+  <table>
+    <tr>
+      <th>Eptituder's events</th>
+    </tr>
+    <tr *ngFor="let event of eptituder.events">
+      <td><a routerLink="/events/{{event.id}}">{{event.name}}</a></td>
+    </tr>
+  </table>
 </div>
