@@ -4,6 +4,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
 import {Clan} from "./clan";
 import {ClanPage} from "./clan.page";
+import {Eptituder} from "./eptituder";
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -32,5 +33,10 @@ export class ClanService {
   updateClan(clan: Clan): Observable<Clan> {
     const url = `${this.clansUrl}/${clan.id}`;
     return this.http.put<Clan>(url, clan, httpOptions);
+  }
+
+  delete(clan: Clan) {
+    const url = `${this.clansUrl}/${clan.id}`;
+    return this.http.delete(url, httpOptions);
   }
 }

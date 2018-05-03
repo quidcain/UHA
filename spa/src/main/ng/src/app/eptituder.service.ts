@@ -33,4 +33,9 @@ export class EptituderService {
     const url = `${this.eptitudersUrl}/${eptituder.id}`;
     return this.http.put<Eptituder>(url, eptituder, httpOptions);
   }
+
+  delete(eptituder: Eptituder) {
+    const url = `${this.eptitudersUrl}/${eptituder.id}`;
+    return this.http.delete(url, httpOptions);
+  }
 }

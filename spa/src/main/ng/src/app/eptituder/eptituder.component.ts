@@ -38,4 +38,9 @@ export class EptituderComponent implements OnInit {
     this.eptituderService.updateEptituder(this.eptituder)
       .subscribe(() => this.goBack());
   }
+
+  delete() {
+    this.eptituderService.delete(this.eptituder)
+      .subscribe(() => this.goBack());
+  }
 }
